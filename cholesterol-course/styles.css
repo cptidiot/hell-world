@@ -1,0 +1,219 @@
+/* ============================================================
+   胆固醇全解 · 十课教学报告
+   配色与版式：医学学术风 + 信息图
+   作者注：纯本地、无外部依赖，可离线打开、可打印为 PDF
+   ============================================================ */
+
+:root {
+  /* 主色板 */
+  --ink: #1a2230;          /* 正文深墨 */
+  --ink-soft: #45506180;   /* 弱化文字 */
+  --paper: #f7f9fc;        /* 背景纸 */
+  --card: #ffffff;
+  --line: #e2e8f1;
+
+  /* 语义色 —— 三大脂质的固定身份色 */
+  --ldl: #e4572e;          /* LDL：橙红（“坏”，需警惕） */
+  --ldl-soft: #fdeee9;
+  --hdl: #2a9d8f;          /* HDL：青绿（“好”，清道夫） */
+  --hdl-soft: #e6f4f2;
+  --tg: #e9b949;           /* 甘油三酯：金黄（能量/脂肪） */
+  --tg-soft: #fcf5e3;
+  --chol: #5b6ee1;         /* 胆固醇分子本身：靛蓝 */
+  --chol-soft: #eceffb;
+
+  --good: #2a9d8f;
+  --warn: #e4572e;
+  --accent: #5b6ee1;
+
+  --radius: 14px;
+  --shadow: 0 6px 28px -12px rgba(26,34,48,.28);
+  --shadow-sm: 0 2px 10px -4px rgba(26,34,48,.22);
+
+  --serif: "Noto Serif SC", Georgia, "Songti SC", "SimSun", serif;
+  --sans: "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.8;
+  font-size: 16.5px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- 顶部进度 + 导航 ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: 980px; margin: 0 auto; padding: 10px 22px;
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.brand { font-weight: 800; letter-spacing: .5px; font-size: 15px; }
+.brand .dot { color: var(--ldl); }
+.nav { display: flex; gap: 4px; flex-wrap: wrap; margin-left: auto; }
+.nav a {
+  font-size: 12.5px; color: var(--ink-soft); text-decoration: none;
+  padding: 4px 9px; border-radius: 999px; transition: .2s;
+  border: 1px solid transparent;
+}
+.nav a:hover { color: var(--ink); background: var(--paper); border-color: var(--line); }
+.progress { height: 3px; background: linear-gradient(90deg, var(--ldl), var(--tg), var(--hdl)); width: 0%; transition: width .15s; }
+
+/* ---------- 容器 ---------- */
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 22px; }
+.lesson { padding: 64px 0 40px; border-bottom: 1px dashed var(--line); }
+.lesson:last-child { border-bottom: none; }
+
+/* ---------- 封面 ---------- */
+.cover {
+  background:
+    radial-gradient(1200px 500px at 80% -10%, #5b6ee122, transparent),
+    radial-gradient(900px 500px at 0% 110%, #2a9d8f1f, transparent),
+    linear-gradient(160deg, #11203a, #1a2740 60%, #243456);
+  color: #eef2fb; padding: 70px 0 60px; position: relative; overflow: hidden;
+}
+.cover .wrap { position: relative; z-index: 2; }
+.cover .kicker { letter-spacing: 4px; font-size: 12px; color: #9fb3e0; text-transform: uppercase; }
+.cover h1 { font-family: var(--serif); font-size: clamp(34px, 6vw, 58px); line-height: 1.15; margin: 14px 0 10px; font-weight: 800; }
+.cover h1 .hl { color: var(--tg); }
+.cover .sub { font-size: 18px; color: #c7d2ea; max-width: 660px; }
+.cover .meta { margin-top: 30px; display: flex; gap: 26px; flex-wrap: wrap; font-size: 13.5px; color: #aebbd8; }
+.cover .meta b { color: #fff; display: block; font-size: 21px; font-family: var(--serif); }
+.cover-molecules { position: absolute; inset: 0; opacity: .16; z-index: 1; }
+
+/* ---------- 通用排版 ---------- */
+h2.l-title { font-family: var(--serif); font-size: clamp(26px,4vw,38px); line-height: 1.2; margin: 0 0 6px; }
+.l-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 13px; letter-spacing: 1px;
+  color: #fff; background: var(--ink); border-radius: 999px;
+  padding: 4px 14px; margin-bottom: 14px;
+}
+.l-lead { font-size: 18px; color: #38445a; max-width: 760px; }
+p { margin: 14px 0; }
+h3 { font-size: 21px; margin: 34px 0 8px; font-family: var(--serif); }
+h4 { font-size: 17px; margin: 24px 0 6px; }
+strong { font-weight: 700; }
+em { font-style: normal; background: linear-gradient(transparent 62%, #e9b94955 62%); padding: 0 2px; }
+a.cite { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); font-weight: 600; }
+ul, ol { padding-left: 22px; }
+li { margin: 7px 0; }
+
+/* ---------- 卡片 / 信息盒 ---------- */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-sm); margin: 22px 0; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+@media (max-width: 720px){ .grid2,.grid3{ grid-template-columns: 1fr; } }
+
+.callout { border-radius: var(--radius); padding: 18px 20px 18px 22px; margin: 22px 0; border-left: 5px solid var(--accent); background: var(--chol-soft); }
+.callout.warn { border-color: var(--ldl); background: var(--ldl-soft); }
+.callout.good { border-color: var(--hdl); background: var(--hdl-soft); }
+.callout.key  { border-color: var(--tg);  background: var(--tg-soft); }
+.callout .tag { font-weight: 800; font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase; display:block; margin-bottom: 4px; opacity: .85;}
+
+/* 证据/论文卡 */
+.paper { border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 12px; padding: 16px 18px; margin: 16px 0; background: #fff; }
+.paper .j { font-size: 12.5px; color: var(--accent); font-weight: 700; letter-spacing: .3px; }
+.paper .t { font-weight: 700; margin: 3px 0; }
+.paper .f { font-size: 14.5px; color: #3a4660; }
+.paper .conc { margin-top: 8px; background: var(--chol-soft); border-radius: 8px; padding: 8px 12px; font-size: 14.5px; }
+
+/* 概念身份徽章 */
+.badge { display:inline-flex; align-items:center; gap:6px; font-weight:700; font-size:13px; padding:3px 11px; border-radius:999px; }
+.b-ldl { background: var(--ldl-soft); color: var(--ldl); }
+.b-hdl { background: var(--hdl-soft); color: var(--hdl); }
+.b-tg  { background: var(--tg-soft);  color: #b6881a; }
+.b-chol{ background: var(--chol-soft);color: var(--chol); }
+
+/* ---------- 表格 ---------- */
+table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14.5px; background:#fff; border-radius: 10px; overflow: hidden; box-shadow: var(--shadow-sm); }
+th, td { padding: 11px 13px; text-align: left; border-bottom: 1px solid var(--line); }
+th { background: #eef2f8; font-weight: 700; font-size: 13px; }
+tr:last-child td { border-bottom: none; }
+td.num { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* ---------- 信息图通用 ---------- */
+.figure { margin: 26px 0; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-sm); }
+.figure .cap { font-size: 13px; color: var(--ink-soft); margin-top: 10px; text-align: center; }
+.fig-title { font-weight: 800; font-size: 14px; letter-spacing: .5px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+svg { max-width: 100%; height: auto; display: block; }
+
+/* 横条对比图 */
+.bars { display: flex; flex-direction: column; gap: 12px; }
+.bar-row { display: grid; grid-template-columns: 150px 1fr 56px; align-items: center; gap: 10px; }
+.bar-row .lab { font-size: 13.5px; font-weight: 600; }
+.bar-track { background: #eef2f8; border-radius: 999px; height: 22px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 999px; display:flex; align-items:center; }
+.bar-row .val { font-size: 13px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; }
+@media (max-width:720px){ .bar-row{ grid-template-columns: 110px 1fr 48px; } }
+
+/* 阶梯目标图 */
+.ladder { display:flex; flex-direction:column-reverse; gap:6px; }
+.step { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-radius:10px; color:#fff; font-weight:600; }
+
+/* 数据高亮大数字 */
+.statline { display:flex; gap: 22px; flex-wrap: wrap; margin: 18px 0; }
+.stat { background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 18px; box-shadow: var(--shadow-sm); flex:1; min-width: 150px; }
+.stat .big { font-family: var(--serif); font-size: 32px; font-weight: 800; line-height:1; }
+.stat .lab2 { font-size: 12.5px; color: var(--ink-soft); margin-top: 6px; }
+
+/* 步骤流程 */
+.flow { display:flex; flex-direction: column; gap: 0; }
+.fstep { display:grid; grid-template-columns: 44px 1fr; gap: 14px; padding-bottom: 18px; position: relative; }
+.fstep:not(:last-child)::before { content:""; position:absolute; left:21px; top:40px; bottom:-2px; width:2px; background: var(--line); }
+.fstep .n { width:44px; height:44px; border-radius:50%; background: var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; z-index:1; }
+.fstep .body { padding-top: 6px; }
+.fstep .body b { display:block; }
+
+/* TOC */
+.toc { columns: 2; column-gap: 32px; }
+@media (max-width:720px){ .toc{ columns: 1; } }
+.toc a { display:block; text-decoration:none; color: var(--ink); padding: 9px 0; border-bottom: 1px solid var(--line); break-inside: avoid; }
+.toc a:hover { color: var(--accent); }
+.toc a span { color: var(--ink-soft); font-size: 13px; }
+.toc .tn { display:inline-block; width: 30px; font-weight:800; color: var(--accent); }
+
+/* 免责声明 */
+.disclaimer { background:#fff7ed; border:1px solid #f5d6a8; border-radius: var(--radius); padding: 16px 20px; font-size: 14px; color:#7a5320; margin: 24px 0; }
+
+/* 返回顶部 */
+.totop { position: fixed; right: 22px; bottom: 22px; z-index: 60; background: var(--ink); color:#fff; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; box-shadow: var(--shadow); opacity:.85; }
+.totop:hover{ opacity:1; }
+
+/* 脚注/参考 */
+.refs { font-size: 13.5px; }
+.refs li { margin: 12px 0; line-height: 1.6; }
+.refs a { color: var(--accent); word-break: break-all; }
+
+/* 页脚 */
+.footer { background: #11203a; color:#aebbd8; padding: 40px 0 50px; font-size: 13.5px; }
+.footer a { color: #cdd9f2; }
+
+/* ---------- 打印 / PDF：约 30 页 ---------- */
+@media print {
+  :root { --paper: #fff; }
+  body { font-size: 11.5px; line-height: 1.55; }
+  .topbar, .totop, .progress, .nav { display: none !important; }
+  .wrap { max-width: 100%; padding: 0 14mm; }
+  .cover { color:#11203a; background:#fff; padding: 30mm 0; border-bottom: 2px solid var(--ink); }
+  .cover .kicker,.cover .sub,.cover .meta { color:#33405a; }
+  .cover h1 .hl { color: var(--ldl); }
+  .cover-molecules { display:none; }
+  .lesson { padding: 0; page-break-before: always; border:none; }
+  #cover, #toc { page-break-after: always; }
+  .card,.figure,.paper,.callout,table,.fstep { page-break-inside: avoid; box-shadow:none; }
+  h2.l-title,h3 { page-break-after: avoid; }
+  a.cite,.refs a { color:#1a2230; }
+  .footer { background:#fff; color:#333; border-top:1px solid var(--line); }
+}

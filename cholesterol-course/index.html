@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>胆固醇全解 · 十课教学报告</title>
+<meta name="description" content="从零讲解胆固醇、低密度脂蛋白(LDL)、高密度脂蛋白(HDL)与甘油三酯：它们是什么、身体如何生产/利用/排泄，对身体的影响，以及面对 LDL 偏高如何应对与监测。结合最有影响力的研究证据。">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== 顶部导航 + 进度条 ===== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">胆固醇<span class="dot">·</span>全解</div>
+    <nav class="nav">
+      <a href="#toc">目录</a>
+      <a href="#l1">1 入门</a>
+      <a href="#l2">2 脂蛋白家族</a>
+      <a href="#l3">3 生产</a>
+      <a href="#l4">4 利用</a>
+      <a href="#l5">5 排泄</a>
+      <a href="#l6">6 失衡</a>
+      <a href="#l7">7 LDL元凶</a>
+      <a href="#l8">8 甘油三酯</a>
+      <a href="#l9">9 你的情况</a>
+      <a href="#l10">10 行动</a>
+      <a href="#refs">参考</a>
+    </nav>
+  </div>
+  <div class="progress" id="progress"></div>
+</div>
+
+<!-- ===== 封面 ===== -->
+<header class="cover" id="cover">
+  <svg class="cover-molecules" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#9fb3e0" stroke-width="1.4">
+      <circle cx="180" cy="120" r="70"/><circle cx="980" cy="90" r="46"/>
+      <circle cx="1040" cy="470" r="90"/><circle cx="120" cy="470" r="54"/>
+      <circle cx="600" cy="300" r="120"/><circle cx="760" cy="520" r="40"/>
+      <path d="M180 120 L600 300 M980 90 L600 300 M1040 470 L600 300 M120 470 L600 300 M760 520 L600 300"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="kicker">一份写给“担心自己 LDL 偏高”的你的完整教程</div>
+    <h1>胆固醇全解<br>从分子到<span class="hl">行动方案</span></h1>
+    <p class="sub">十节课，从零讲透胆固醇、低密度脂蛋白(LDL)、高密度脂蛋白(HDL)、甘油三酯——它们是什么、身体怎样生产、利用与排泄、对身体的影响；并结合全球最有影响力的研究，给出你该如何应对、多久复查的可执行计划。</p>
+    <div class="meta">
+      <div><b>10</b> 节渐进课程</div>
+      <div><b>20+</b> 信息图</div>
+      <div><b>12</b> 篇里程碑研究</div>
+      <div><b>~30</b> 页可打印报告</div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 开场 + 免责声明 ===== -->
+<section class="wrap" style="padding-top:46px">
+  <div class="callout key">
+    <span class="tag">先说最重要的一句话，帮你睡个好觉</span>
+    LDL 偏高<strong>不是急症</strong>。它造成的是“几十年慢慢累积”的风险，而不是今晚或这个月会发生的事。这意味着你<strong>有充足的时间</strong>去理解它、调整它、复查它。本教程的目标，就是把这件事从“模糊的恐惧”变成“清晰、可控、有数据支撑的项目”。读完你会明白：每一个指标意味着什么、哪些因素在真正影响你的数字、按影响力你该先做什么、以及多久测一次才知道有没有效果。
+  </div>
+
+  <div class="disclaimer">
+    <strong>重要声明：</strong>本教程为<strong>健康科普与教育用途</strong>，旨在帮助你理解概念、读懂化验单、与医生更好地沟通。它<strong>不能替代医生的诊断、个体化评估或处方</strong>。文中的目标值、药物与剂量信息来自公开发表的指南与研究，但你的具体方案必须由了解你完整病史（家族史、血压、血糖、是否吸烟、既往病史等）的医生决定。如你有不适或重大决定，请以临床医生意见为准。
+  </div>
+</section>
+
+<!-- ===== 目录 ===== -->
+<section class="wrap lesson" id="toc">
+  <span class="l-num">目录 · CONTENTS</span>
+  <h2 class="l-title">这门课怎么走</h2>
+  <p class="l-lead">课程由“是什么 → 怎么运转 → 为什么会出问题 → 你该怎么办”四个台阶搭成。前五课打地基，第六到八课讲清风险与因果证据，最后两课完全为“你的情况”服务。</p>
+  <div class="card">
+    <nav class="toc">
+      <a href="#l1"><span class="tn">01</span> 脂质入门：胆固醇到底是什么，为什么我们离不开它 <br><span>　　脂肪 vs 胆固醇 vs 脂蛋白 · 为什么油和水不相容也要被运输</span></a>
+      <a href="#l2"><span class="tn">02</span> 脂蛋白家族全图鉴：LDL、HDL、VLDL、甘油三酯、残余胆固醇、Lp(a) <br><span>　　“坏”与“好”的真正含义 · 一张大小密度谱</span></a>
+      <a href="#l3"><span class="tn">03</span> 身体如何“生产”胆固醇：肝脏工厂与那台被他汀关掉的机器 <br><span>　　内源合成 vs 饮食摄入 · 为什么吃的胆固醇没你想得那么关键</span></a>
+      <a href="#l4"><span class="tn">04</span> 如何“利用”：LDL 受体、细胞膜、激素与维生素 D <br><span>　　胆固醇的正当用途 · 家族性高胆固醇血症的根源</span></a>
+      <a href="#l5"><span class="tn">05</span> 如何“排泄”：胆汁、肠肝循环与逆向转运 <br><span>　　HDL 的清道夫工作 · 身体清除胆固醇的唯一出口</span></a>
+      <a href="#l6"><span class="tn">06</span> 当系统失衡：动脉粥样硬化是怎样一步步形成的 <br><span>　　从一个 LDL 颗粒钻进血管壁，到斑块、到心梗</span></a>
+      <a href="#l7"><span class="tn">07</span> 为什么说 LDL 是“元凶”：因果证据的三角验证 <br><span>　　EAS 共识 · 孟德尔随机化 · 他汀大荟萃</span></a>
+      <a href="#l8"><span class="tn">08</span> 甘油三酯与残余胆固醇：被低估的另一条风险线 <br><span>　　为什么高甘油三酯也危险 · 代谢综合征</span></a>
+      <a href="#l9"><span class="tn">09</span> 你的情况：影响 LDL 的因素按“影响力”排序 + 对策 <br><span>　　基因、饱和脂肪、体重、纤维、运动…谁的权重最大</span></a>
+      <a href="#l10"><span class="tn">10</span> 行动与监测：目标值、做什么、多久复查、何时该用药 <br><span>　　12 周计划 · 复查时间表 · 最有影响力研究总表</span></a>
+    </nav>
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 1
+============================================================ -->
+<section class="wrap lesson" id="l1">
+  <span class="l-num">课程 01 · 入门</span>
+  <h2 class="l-title">胆固醇到底是什么，为什么我们离不开它</h2>
+  <p class="l-lead">在担心“胆固醇高”之前，先认识它的真面目：胆固醇不是毒药、不是入侵者，而是你身体每一个细胞都必需的建筑材料。理解这一点，是后面所有判断的基础。</p>
+
+  <h3>一、胆固醇是一种“蜡状”的脂质分子</h3>
+  <p>胆固醇（cholesterol）是一种柔软、像蜡一样的<strong>脂质（lipid）</strong>。它属于一类叫做“甾醇（sterol）”的分子。你身体里大约有 35 克胆固醇，它无处不在——尤其集中在大脑、神经和每一个细胞的“外墙”上。</p>
+  <p>它的关键身份有三个：</p>
+  <ul>
+    <li><strong>细胞膜的砖块</strong>：每个细胞都被一层膜包裹，胆固醇嵌在膜里，决定膜的<em>流动性与坚固度</em>——太软不行，太硬也不行，胆固醇负责调节这个平衡。</li>
+    <li><strong>激素的原料</strong>：皮质醇（应激激素）、醛固酮（管血压和水盐）、以及睾酮、雌激素、孕激素等<em>性激素</em>，全都由胆固醇一步步合成。</li>
+    <li><strong>维生素 D 与胆汁酸的前体</strong>：皮肤在阳光下把胆固醇变成维生素 D；肝脏把胆固醇变成胆汁酸来消化脂肪。</li>
+  </ul>
+
+  <div class="callout good">
+    <span class="tag">关键认知 1</span>
+    身体如此重视胆固醇，以至于它<strong>不依赖你吃进去多少</strong>——你的肝脏每天自己制造大约 80% 的胆固醇，只有约 20% 来自食物。这就是为什么“少吃一个鸡蛋”对血液胆固醇的影响，远比大多数人想象的要小（详见课程 3）。
+  </div>
+
+  <h3>二、可它有个大麻烦：油和水不相容</h3>
+  <p>你的血液是<strong>水性</strong>的，而胆固醇和脂肪是<strong>油性</strong>的。把油倒进水里会发生什么？它们分开、结块、漂浮。所以身体面临一个工程难题：<em>如何把不溶于水的油，安全地溶在水性的血液里、运送到全身？</em></p>
+  <p>答案是造一种“运油船”——把脂质包进一个外壳里，外壳朝外的一面是亲水的，于是整艘船就能在血液里平稳航行。这种运油船，就叫<strong>脂蛋白（lipoprotein）</strong>。</p>
+
+  <!-- 信息图：脂蛋白结构剖面 -->
+  <div class="figure">
+    <div class="fig-title">信息图 1.1 · 一艘“运油船”的剖面：脂蛋白结构</div>
+    <svg viewBox="0 0 760 320" role="img" aria-label="脂蛋白颗粒剖面图">
+      <defs>
+        <radialGradient id="core" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stop-color="#f6d98f"/><stop offset="100%" stop-color="#e9b949"/>
+        </radialGradient>
+      </defs>
+      <!-- 外壳 -->
+      <circle cx="250" cy="160" r="135" fill="#eef2fb" stroke="#5b6ee1" stroke-width="2"/>
+      <!-- 磷脂单层小球 -->
+      <g fill="#5b6ee1">
+        <!-- 用一圈小圆点示意亲水头 -->
+      </g>
+      <circle cx="250" cy="160" r="135" fill="none" stroke="#5b6ee1" stroke-width="10" stroke-dasharray="3 9" opacity=".55"/>
+      <!-- 内核 -->
+      <circle cx="250" cy="160" r="92" fill="url(#core)"/>
+      <text x="250" y="150" text-anchor="middle" font-size="15" fill="#7a5b12" font-weight="700">脂质内核</text>
+      <text x="250" y="172" text-anchor="middle" font-size="12.5" fill="#7a5b12">胆固醇酯 · 甘油三酯</text>
+      <text x="250" y="190" text-anchor="middle" font-size="11" fill="#7a5b12">（油性，怕水，藏在最里面）</text>
+      <!-- 载脂蛋白 -->
+      <ellipse cx="250" cy="48" rx="40" ry="16" fill="#e4572e"/>
+      <text x="250" y="52" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">载脂蛋白</text>
+      <!-- 标注 -->
+      <g font-size="13" fill="#1a2230">
+        <line x1="430" y1="70" x2="290" y2="48" stroke="#e4572e" stroke-width="1.5"/>
+        <text x="438" y="68" font-weight="700" fill="#e4572e">载脂蛋白 (Apo)</text>
+        <text x="438" y="86" font-size="11.5" fill="#45506180">船上的“身份证+方向盘”，</text>
+        <text x="438" y="102" font-size="11.5" fill="#45506180">决定这艘船去哪、被谁识别</text>
+
+        <line x1="430" y1="160" x2="385" y2="160" stroke="#5b6ee1" stroke-width="1.5"/>
+        <text x="438" y="155" font-weight="700" fill="#5b6ee1">磷脂 + 自由胆固醇外壳</text>
+        <text x="438" y="172" font-size="11.5" fill="#45506180">亲水的一面朝外，让整艘船</text>
+        <text x="438" y="188" font-size="11.5" fill="#45506180">能溶进水性的血液</text>
+
+        <line x1="430" y1="250" x2="320" y2="220" stroke="#e9b949" stroke-width="1.5"/>
+        <text x="438" y="248" font-weight="700" fill="#b6881a">脂质内核</text>
+        <text x="438" y="265" font-size="11.5" fill="#45506180">真正要运的货：胆固醇与脂肪</text>
+      </g>
+    </svg>
+    <div class="cap">每一个脂蛋白都是“亲水外壳 + 油性内核 + 载脂蛋白标签”的组合。后面我们说的 LDL、HDL，本质都是这种船，只是大小、密度和标签不同。</div>
+  </div>
+
+  <h3>三、先把四个名词的关系理顺</h3>
+  <p>化验单上的名词容易让人混乱，其实它们是“货物”和“运货船”的关系：</p>
+  <table>
+    <tr><th>名词</th><th>它是什么</th><th>类比</th></tr>
+    <tr><td><span class="badge b-chol">胆固醇</span></td><td>一种脂质分子（货物本身）</td><td>要运送的“砖块”</td></tr>
+    <tr><td><span class="badge b-tg">甘油三酯</span></td><td>另一种脂质，身体的主要储能形式（货物本身）</td><td>要运送的“燃料”</td></tr>
+    <tr><td><span class="badge b-ldl">LDL</span></td><td>低密度脂蛋白：一艘把胆固醇<strong>送往</strong>全身的船</td><td>送货车</td></tr>
+    <tr><td><span class="badge b-hdl">HDL</span></td><td>高密度脂蛋白：一艘把多余胆固醇<strong>运回</strong>肝脏的船</td><td>回收车</td></tr>
+  </table>
+  <div class="callout">
+    <span class="tag">关键认知 2</span>
+    所谓“LDL 胆固醇”和“HDL 胆固醇”，量的<strong>不是不同的胆固醇</strong>——胆固醇分子是同一种。化验测的是“被装在 LDL 船里的胆固醇有多少”和“被装在 HDL 船里的有多少”。<strong>真正决定好坏的不是货物，而是船的种类和它要去的方向。</strong>这是整门课最重要的一句话，请记住它。
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">本课小结</span>
+    胆固醇是必需的建筑与原料分子；因为它不溶于水，必须由脂蛋白这种“船”在血里运输；化验单上的 LDL/HDL 是“船”，胆固醇/甘油三酯是“货”。下一课，我们把这支船队的每个成员都点名认识一遍。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 2
+============================================================ -->
+<section class="wrap lesson" id="l2">
+  <span class="l-num">课程 02 · 脂蛋白家族</span>
+  <h2 class="l-title">脂蛋白家族全图鉴：谁是“坏”，谁是“好”</h2>
+  <p class="l-lead">血液里的脂蛋白不止 LDL 和 HDL。认识整个家族，你才能理解为什么医生看的不只是一个数字，以及“坏”与“好”到底坏在哪、好在哪。</p>
+
+  <h3>一、按密度排队：从最“轻”到最“重”</h3>
+  <p>脂蛋白的命名来自它的<strong>密度</strong>（density）。船里装的油越多、蛋白越少，就越轻、密度越低；装的蛋白越多、油越少，就越重、密度越高。于是有了这支按密度排列的船队：</p>
+
+  <!-- 信息图：脂蛋白大小密度谱 -->
+  <div class="figure">
+    <div class="fig-title">信息图 2.1 · 脂蛋白大小 / 密度谱</div>
+    <svg viewBox="0 0 760 300" role="img" aria-label="脂蛋白从大到小、从轻到重的谱系">
+      <line x1="40" y1="250" x2="730" y2="250" stroke="#cdd6e6" stroke-width="2"/>
+      <text x="40" y="278" font-size="12" fill="#45506180">体积大 · 密度低 · 富含甘油三酯</text>
+      <text x="730" y="278" font-size="12" fill="#45506180" text-anchor="end">体积小 · 密度高 · 富含蛋白</text>
+      <!-- 乳糜微粒 -->
+      <circle cx="110" cy="170" r="62" fill="#fcf5e3" stroke="#e9b949" stroke-width="2.5"/>
+      <text x="110" y="170" text-anchor="middle" font-size="12.5" font-weight="700" fill="#b6881a">乳糜微粒</text>
+      <text x="110" y="187" text-anchor="middle" font-size="10.5" fill="#b6881a">Chylomicron</text>
+      <!-- VLDL -->
+      <circle cx="270" cy="185" r="44" fill="#fcf5e3" stroke="#e9b949" stroke-width="2.5"/>
+      <text x="270" y="183" text-anchor="middle" font-size="12.5" font-weight="700" fill="#b6881a">VLDL</text>
+      <text x="270" y="199" text-anchor="middle" font-size="10" fill="#b6881a">极低密度</text>
+      <!-- IDL/残余 -->
+      <circle cx="400" cy="198" r="32" fill="#f1ece1" stroke="#c9a94a" stroke-width="2.5"/>
+      <text x="400" y="196" text-anchor="middle" font-size="11" font-weight="700" fill="#9a7c2a">残余/IDL</text>
+      <text x="400" y="210" text-anchor="middle" font-size="9" fill="#9a7c2a">remnant</text>
+      <!-- LDL -->
+      <circle cx="520" cy="205" r="26" fill="#fdeee9" stroke="#e4572e" stroke-width="3"/>
+      <text x="520" y="203" text-anchor="middle" font-size="12" font-weight="800" fill="#e4572e">LDL</text>
+      <text x="520" y="217" text-anchor="middle" font-size="9" fill="#e4572e">低密度</text>
+      <!-- HDL -->
+      <circle cx="640" cy="214" r="17" fill="#e6f4f2" stroke="#2a9d8f" stroke-width="3"/>
+      <text x="640" y="212" text-anchor="middle" font-size="11" font-weight="800" fill="#2a9d8f">HDL</text>
+      <text x="640" y="226" text-anchor="middle" font-size="9" fill="#2a9d8f">高密度</text>
+    </svg>
+    <div class="cap">越往右，船越小、蛋白占比越高、密度越大。注意一个反直觉的事实：<strong>越小的 LDL 颗粒越容易钻进血管壁</strong>——这正是它危险的原因之一。</div>
+  </div>
+
+  <h3>二、点名认识每位成员</h3>
+  <div class="grid2">
+    <div class="card">
+      <span class="badge b-tg">乳糜微粒 Chylomicron</span>
+      <p style="margin-top:10px">最大、最轻。<strong>来自你刚吃下的那顿饭</strong>——小肠把食物里的脂肪打包成乳糜微粒，送进血液。主要装<em>甘油三酯</em>。餐后几小时升高，空腹时基本消失。</p>
+    </div>
+    <div class="card">
+      <span class="badge b-tg">VLDL 极低密度脂蛋白</span>
+      <p style="margin-top:10px"><strong>肝脏造的“燃料外送车”</strong>。当身体需要把能量送到肌肉和脂肪组织，肝脏把甘油三酯打包成 VLDL 送出去。它卸下甘油三酯后会逐渐“瘦身”，变成残余颗粒，再变成 LDL。</p>
+    </div>
+    <div class="card">
+      <span class="badge b-chol">残余胆固醇 / IDL</span>
+      <p style="margin-top:10px">VLDL 卸货后的“半成品”。富含胆固醇，<strong>体积仍小到能钻进血管壁</strong>。近十年研究发现它是<em>被长期低估的独立风险因素</em>（详见课程 8）。</p>
+    </div>
+    <div class="card">
+      <span class="badge b-ldl">LDL 低密度脂蛋白 ——“坏胆固醇”</span>
+      <p style="margin-top:10px"><strong>把胆固醇送往全身细胞的主力送货车。</strong>本职工作完全正当。问题在于：当血里 LDL 太多、停留太久，多余的颗粒会<em>渗入并卡在动脉壁中</em>，引发后面所有麻烦。它装着血液里约 60–70% 的胆固醇。</p>
+    </div>
+    <div class="card">
+      <span class="badge b-hdl">HDL 高密度脂蛋白 ——“好胆固醇”</span>
+      <p style="margin-top:10px"><strong>逆向运输的回收车。</strong>它从血管壁、从其他细胞那里<em>收集多余胆固醇，运回肝脏处理</em>。HDL 高，通常意味着这套清理系统运转良好——但请注意下面这条重要更正。</p>
+    </div>
+    <div class="card">
+      <span class="badge b-chol">Lp(a) 脂蛋白(a)</span>
+      <p style="margin-top:10px">一种特殊的、<strong>几乎完全由基因决定</strong>的类 LDL 颗粒。它高，是独立的遗传性心血管风险因素，普通生活方式很难改变它，但值得<em>一生检测一次</em>来排查。</p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">重要更正：HDL 不是“越高越好”</span>
+    过去把 HDL 当成“多多益善”。但近年的<strong>孟德尔随机化研究</strong>发现：通过基因把 HDL 单纯升高，<strong>并不能降低心梗风险</strong>。也就是说 HDL 高更像是“健康代谢的一个<em>标志/仪表盘读数</em>”，而不是你可以靠拉高它来直接换取保护的杠杆。真正值得你下力气去降的杠杆，是 <span class="badge b-ldl">LDL</span> 和 <span class="badge b-tg">甘油三酯/残余胆固醇</span>。这是这门课会反复强调的重点。
+  </div>
+
+  <h3>三、为什么医生要算“非 HDL 胆固醇”</h3>
+  <p>既然真正有害的是所有“能钻进血管壁”的颗粒（LDL + VLDL + 残余 + Lp(a)），医生常用一个简单的减法把它们一网打尽：</p>
+  <div class="card" style="text-align:center;background:var(--chol-soft)">
+    <div style="font-family:var(--serif);font-size:22px;font-weight:800;">非 HDL 胆固醇 = 总胆固醇 − HDL 胆固醇</div>
+    <p style="margin:8px 0 0;font-size:14px;color:#45506180">一个数字囊括了所有“致动脉粥样硬化”的颗粒，比单看 LDL 更全面，尤其当你甘油三酯也偏高时。</p>
+  </div>
+
+  <div class="callout">
+    <span class="tag">本课小结</span>
+    船队成员：乳糜微粒、VLDL、残余/IDL、LDL、HDL、Lp(a)。<strong>“致病的一方”是含 ApoB 的颗粒（LDL、VLDL、残余、Lp(a)）；HDL 是清理方但不能靠硬拉高来获益。</strong>记住“非 HDL = 总 − HDL”这个全景指标。下一课进工厂，看胆固醇是怎么被造出来的。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 3
+============================================================ -->
+<section class="wrap lesson" id="l3">
+  <span class="l-num">课程 03 · 生产</span>
+  <h2 class="l-title">身体如何“生产”胆固醇：肝脏工厂与那台被他汀关掉的机器</h2>
+  <p class="l-lead">这一课回答两个最常被误解的问题：胆固醇主要从哪来？以及——为什么“管住嘴少吃胆固醇”对很多人效果有限，而他汀类药却如此有效。</p>
+
+  <h3>一、两个来源：自己造的 vs 吃进来的</h3>
+  <p>血里的胆固醇有两条来路，但比例很悬殊：</p>
+  <div class="statline">
+    <div class="stat"><div class="big" style="color:var(--chol)">~80%</div><div class="lab2">内源合成<br>由肝脏（及其他细胞）自己制造</div></div>
+    <div class="stat"><div class="big" style="color:var(--tg)">~20%</div><div class="lab2">外源摄入<br>来自食物（蛋、肉、内脏等）</div></div>
+    <div class="stat"><div class="big" style="color:var(--hdl)">自动调节</div><div class="lab2">你吃得多，肝脏就造得少<br>身体努力维持总量平衡</div></div>
+  </div>
+  <p>这就是关键：身体有一套<strong>负反馈调节</strong>。你从食物里多吸收一点胆固醇，肝脏就识趣地少造一点；你吃得少，它就多造一点。所以对<em>大多数</em>人来说，单纯减少“饮食胆固醇”（比如鸡蛋）对血液 LDL 的影响是温和的。</p>
+
+  <div class="callout key">
+    <span class="tag">关键认知 3 —— 一个常见误区</span>
+    真正显著拉高血液 LDL 的饮食因素，<strong>不是食物里的“胆固醇含量”，而是“饱和脂肪”和“反式脂肪”</strong>。它们会让肝脏减少 LDL 受体（回收 LDL 的“吸口”），导致血里 LDL 清不掉、堆积升高。所以“少吃饱和脂肪”往往比“少吃一个蛋黄”更有用。这点会在课程 9 量化排序。
+  </div>
+
+  <h3>二、合成流水线：那台叫 HMG-CoA 还原酶的机器</h3>
+  <p>肝细胞从一个小分子（乙酰辅酶 A，来自糖、脂肪的代谢）出发，经过近 30 步反应造出胆固醇。整条流水线上有一个<strong>限速阀门</strong>——一种叫 <strong>HMG-CoA 还原酶</strong> 的酶。它开多大，决定了工厂产能。</p>
+
+  <!-- 信息图：合成流水线 + 他汀作用点 -->
+  <div class="figure">
+    <div class="fig-title">信息图 3.1 · 胆固醇合成流水线与他汀的作用点</div>
+    <svg viewBox="0 0 760 250" role="img" aria-label="从乙酰辅酶A到胆固醇的合成流程，他汀阻断限速酶">
+      <g font-size="12.5" fill="#1a2230">
+        <!-- 节点 -->
+        <rect x="20" y="100" width="120" height="48" rx="10" fill="#eef2fb" stroke="#5b6ee1"/>
+        <text x="80" y="122" text-anchor="middle">乙酰辅酶 A</text>
+        <text x="80" y="139" text-anchor="middle" font-size="10" fill="#45506180">来自糖/脂肪代谢</text>
+
+        <rect x="190" y="100" width="120" height="48" rx="10" fill="#eef2fb" stroke="#5b6ee1"/>
+        <text x="250" y="127" text-anchor="middle">HMG-CoA</text>
+
+        <rect x="360" y="100" width="150" height="48" rx="10" fill="#fdeee9" stroke="#e4572e" stroke-width="2"/>
+        <text x="435" y="121" text-anchor="middle" font-weight="700" fill="#e4572e">甲羟戊酸</text>
+        <text x="435" y="138" text-anchor="middle" font-size="10" fill="#e4572e">（限速阀门在此）</text>
+
+        <rect x="560" y="100" width="180" height="48" rx="10" fill="#fcf5e3" stroke="#e9b949"/>
+        <text x="650" y="121" text-anchor="middle">胆固醇</text>
+        <text x="650" y="138" text-anchor="middle" font-size="10" fill="#45506180">（约30步后的终产物）</text>
+
+        <!-- 箭头 -->
+        <g stroke="#9aa6bd" stroke-width="2" fill="none" marker-end="url(#ah)">
+          <path d="M140 124 H188"/>
+          <path d="M310 124 H358"/>
+          <path d="M510 124 H558"/>
+        </g>
+        <defs><marker id="ah" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#9aa6bd"/></marker></defs>
+
+        <!-- 限速酶标注 -->
+        <text x="335" y="92" text-anchor="middle" font-size="11" fill="#45506180">HMG-CoA 还原酶</text>
+
+        <!-- 他汀阻断 -->
+        <line x1="335" y1="40" x2="335" y2="98" stroke="#e4572e" stroke-width="2.5"/>
+        <circle cx="335" cy="36" r="24" fill="#e4572e"/>
+        <text x="335" y="33" text-anchor="middle" font-size="11" fill="#fff" font-weight="700">他汀</text>
+        <text x="335" y="47" text-anchor="middle" font-size="9" fill="#fff">Statin</text>
+        <text x="335" y="78" text-anchor="middle" font-size="11" fill="#e4572e" font-weight="700">✕ 阻断</text>
+      </g>
+    </svg>
+    <div class="cap">他汀类药物（如阿托伐他汀、瑞舒伐他汀）正是<strong>抑制 HMG-CoA 还原酶</strong>这台限速机器，从源头减少肝脏自造胆固醇——这就是它们如此有效的机理。</div>
+  </div>
+
+  <h3>三、他汀的“连锁妙处”：逼肝脏多装回收口</h3>
+  <p>他汀的厉害之处不止“减少生产”。当肝细胞内胆固醇变少，它会感到“不够用”，于是<strong>在细胞表面增加 LDL 受体</strong>——也就是更多“吸口”，把血液里的 LDL 颗粒大量吸回来分解。结果是<em>血里的 LDL 被加速清除</em>，水平大幅下降。这正是后面课程 7 中那些大型试验数据的生物学基础。</p>
+
+  <div class="callout good">
+    <span class="tag">把它和你的情况连起来</span>
+    理解这条流水线后，你会更容易接受一个事实：<strong>LDL 偏高很多时候并不是“你吃错了什么”，而是“肝脏的生产与回收设定值”问题</strong>——可能来自基因，可能来自饱和脂肪摄入，也可能两者叠加。这不是道德问题，是生理设定问题，而生理设定是可以用饮食、运动和（必要时）药物去调整的。
+  </div>
+
+  <div class="callout">
+    <span class="tag">本课小结</span>
+    约 80% 胆固醇是肝脏自造的；饱和/反式脂肪比“饮食胆固醇”更能拉高 LDL；HMG-CoA 还原酶是限速阀门，他汀通过关小它+逼肝脏多装 LDL 受体来双重降 LDL。下一课，看造出来的胆固醇被运到全身后，到底派上什么用场。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 4
+============================================================ -->
+<section class="wrap lesson" id="l4">
+  <span class="l-num">课程 04 · 利用</span>
+  <h2 class="l-title">如何“利用”：LDL 受体、细胞膜、激素与维生素 D</h2>
+  <p class="l-lead">胆固醇被造出来、被 LDL 运到全身后，细胞是怎么取用它的？理解这个“取货”机制，你就能明白家族性高胆固醇血症为什么会让 LDL 天生很高——这对判断你自己的情况非常关键。</p>
+
+  <h3>一、细胞怎么“取货”：LDL 受体的吸口</h3>
+  <p>每个需要胆固醇的细胞，表面都有一种叫 <strong>LDL 受体（LDL receptor）</strong>的“吸口”。当一艘 LDL 船经过，受体认出船上的载脂蛋白标签（ApoB-100），把整艘船<em>抓住、吞进细胞</em>，再拆开取出胆固醇供细胞使用。</p>
+
+  <!-- 信息图：LDL受体摄取循环 -->
+  <div class="figure">
+    <div class="fig-title">信息图 4.1 · LDL 受体的“取货循环”</div>
+    <svg viewBox="0 0 760 230" role="img" aria-label="LDL颗粒被肝细胞表面受体识别、吞入、分解的过程">
+      <g font-size="12" fill="#1a2230">
+        <rect x="40" y="150" width="680" height="60" fill="#eef4f2" stroke="#2a9d8f" stroke-width="1.5"/>
+        <text x="55" y="200" font-size="11" fill="#2a9d8f">肝细胞</text>
+        <circle cx="130" cy="70" r="30" fill="#fdeee9" stroke="#e4572e" stroke-width="2.5"/>
+        <text x="130" y="74" text-anchor="middle" font-weight="800" fill="#e4572e">LDL</text>
+        <path d="M130 150 v-20" stroke="#5b6ee1" stroke-width="3"/>
+        <circle cx="130" cy="126" r="6" fill="#5b6ee1"/>
+        <text x="130" y="172" text-anchor="middle" font-size="10" fill="#5b6ee1">LDL受体</text>
+        <g stroke="#9aa6bd" stroke-width="2" fill="none" marker-end="url(#ah2)">
+          <path d="M170 80 H300"/>
+          <path d="M400 110 H470"/>
+          <path d="M600 110 H660"/>
+        </g>
+        <defs><marker id="ah2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#9aa6bd"/></marker></defs>
+        <text x="235" y="72" text-anchor="middle" font-size="11" fill="#45506180">① 识别+抓住</text>
+        <circle cx="350" cy="110" r="26" fill="#eef2fb" stroke="#5b6ee1" stroke-width="2"/>
+        <text x="350" y="113" text-anchor="middle" font-size="10" fill="#5b6ee1">② 吞入</text>
+        <circle cx="535" cy="110" r="26" fill="#fcf5e3" stroke="#e9b949" stroke-width="2"/>
+        <text x="535" y="107" text-anchor="middle" font-size="10" fill="#b6881a">③ 拆解</text>
+        <text x="535" y="121" text-anchor="middle" font-size="9" fill="#b6881a">取出胆固醇</text>
+        <text x="690" y="100" text-anchor="middle" font-size="11" fill="#2a9d8f" font-weight="700">④ 供</text>
+        <text x="690" y="116" text-anchor="middle" font-size="11" fill="#2a9d8f" font-weight="700">细胞使用</text>
+      </g>
+    </svg>
+    <div class="cap">受体越多，血里的 LDL 被清得越快、越干净。<strong>这正是问题的核心：如果受体先天偏少或失灵，LDL 就清不掉、在血里堆高。</strong></div>
+  </div>
+
+  <h3>二、胆固醇的正当用途清单</h3>
+  <div class="grid3">
+    <div class="card"><span class="badge b-chol">细胞膜</span><p style="margin-top:8px">嵌进每个细胞的膜，调节膜的<em>流动性与稳定性</em>。神经细胞外的髓鞘尤其依赖它。</p></div>
+    <div class="card"><span class="badge b-chol">类固醇激素</span><p style="margin-top:8px">皮质醇、醛固酮、雌激素、睾酮、孕激素的<em>共同原料</em>。</p></div>
+    <div class="card"><span class="badge b-chol">维生素 D</span><p style="margin-top:8px">皮肤里的胆固醇衍生物经<em>紫外线</em>转化为维生素 D。</p></div>
+    <div class="card"><span class="badge b-chol">胆汁酸</span><p style="margin-top:8px">肝脏把胆固醇变成胆汁酸，用来<em>乳化、消化膳食脂肪</em>（下一课详述）。</p></div>
+    <div class="card"><span class="badge b-chol">大脑</span><p style="margin-top:8px">大脑只占体重 2%，却含全身约 <em>20% 的胆固醇</em>，用于神经连接。</p></div>
+    <div class="card"><span class="badge b-chol">细胞修复</span><p style="margin-top:8px">组织修复、新细胞生成时，都需要胆固醇作建材。</p></div>
+  </div>
+
+  <h3>三、家族性高胆固醇血症：当“吸口”天生不够</h3>
+  <p>有些人天生携带一个基因变异，导致 <strong>LDL 受体先天偏少或不工作</strong>（最常见是 LDLR、ApoB 或 PCSK9 基因的变异）。后果是：无论怎么吃，LDL 都清不干净，从小就高得多——这就是<strong>家族性高胆固醇血症（FH）</strong>。</p>
+  <div class="callout warn">
+    <span class="tag">这条线索请对照你自己</span>
+    FH 并不罕见，杂合型约每 250 人就有 1 人。<strong>识别信号</strong>：① 你的 LDL 明显偏高（例如未治疗时 ≥ 4.9 mmol/L / 190 mg/dL）；② 父母、兄弟姐妹中有人很早就心梗或中风（男性 &lt;55 岁、女性 &lt;65 岁）；③ 跟腱增厚、眼睑黄色瘤、角膜弓出现得早。<strong>如果这些符合，请主动告诉医生“我想排查家族性高胆固醇血症”</strong>——因为 FH 患者的风险与应对节奏和普通人不同，越早干预收益越大（课程 7 的“终身暴露”会解释为什么）。
+  </div>
+
+  <div class="callout">
+    <span class="tag">本课小结</span>
+    细胞靠 LDL 受体“取货”；受体越多，血里 LDL 清得越快。胆固醇用于细胞膜、激素、维生素 D、胆汁酸、大脑。受体先天不足 → 家族性高胆固醇血症 → 天生 LDL 高。下一课讲身体唯一的“出口”：排泄。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 5
+============================================================ -->
+<section class="wrap lesson" id="l5">
+  <span class="l-num">课程 05 · 排泄</span>
+  <h2 class="l-title">如何“排泄”：胆汁、肠肝循环与逆向转运</h2>
+  <p class="l-lead">身体不能像烧掉糖那样“烧掉”胆固醇——它没有分解胆固醇环的酶。所以清除胆固醇只有一条主路：经肝脏变成胆汁、随粪便排出。理解这条出口，你就懂了膳食纤维为什么能降胆固醇。</p>
+
+  <h3>一、唯一的大门：肝脏 → 胆汁 → 肠道 → 粪便</h3>
+  <p>肝脏是胆固醇代谢的总枢纽。它把多余的胆固醇有两种处理方式：① 直接排进胆汁；② 先转化成<strong>胆汁酸</strong>再排进胆汁。胆汁经胆囊进入小肠，帮助消化脂肪，最终一部分随粪便离开身体。</p>
+
+  <div class="figure">
+    <div class="fig-title">信息图 5.1 · 逆向胆固醇转运与排泄通路</div>
+    <svg viewBox="0 0 760 300" role="img" aria-label="HDL把外周胆固醇运回肝脏，肝脏经胆汁排入肠道，部分被纤维带走">
+      <g font-size="12" fill="#1a2230">
+        <rect x="30" y="40" width="150" height="60" rx="10" fill="#fdeee9" stroke="#e4572e"/>
+        <text x="105" y="66" text-anchor="middle" font-weight="700">血管壁/外周</text>
+        <text x="105" y="84" text-anchor="middle" font-size="10" fill="#e4572e">多余胆固醇堆在这里</text>
+        <circle cx="330" cy="70" r="30" fill="#e6f4f2" stroke="#2a9d8f" stroke-width="2.5"/>
+        <text x="330" y="74" text-anchor="middle" font-weight="800" fill="#2a9d8f">HDL</text>
+        <rect x="560" y="40" width="160" height="60" rx="10" fill="#fcf5e3" stroke="#e9b949"/>
+        <text x="640" y="66" text-anchor="middle" font-weight="700" fill="#b6881a">肝脏</text>
+        <text x="640" y="84" text-anchor="middle" font-size="10" fill="#b6881a">处理中心</text>
+        <rect x="560" y="200" width="160" height="60" rx="10" fill="#eef4f2" stroke="#2a9d8f"/>
+        <text x="640" y="226" text-anchor="middle" font-weight="700" fill="#2a9d8f">肠道</text>
+        <rect x="300" y="200" width="170" height="60" rx="10" fill="#eef2fb" stroke="#5b6ee1"/>
+        <text x="385" y="226" text-anchor="middle" font-weight="700" fill="#5b6ee1">随粪便排出</text>
+        <text x="385" y="244" text-anchor="middle" font-size="10" fill="#5b6ee1">身体唯一的大出口</text>
+        <g stroke="#2a9d8f" stroke-width="2.5" fill="none" marker-end="url(#ah3)">
+          <path d="M182 70 H296"/>
+          <path d="M362 65 H556"/>
+          <path d="M640 102 V198"/>
+        </g>
+        <g stroke="#5b6ee1" stroke-width="2.5" fill="none" marker-end="url(#ah3b)">
+          <path d="M556 230 H472"/>
+        </g>
+        <g stroke="#e4572e" stroke-width="2" fill="none" stroke-dasharray="5 5" marker-end="url(#ah3c)">
+          <path d="M610 198 C560 150 600 120 632 104"/>
+        </g>
+        <defs>
+          <marker id="ah3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#2a9d8f"/></marker>
+          <marker id="ah3b" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#5b6ee1"/></marker>
+          <marker id="ah3c" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#e4572e"/></marker>
+        </defs>
+        <text x="250" y="58" font-size="10" fill="#2a9d8f">①收集</text>
+        <text x="450" y="55" font-size="10" fill="#2a9d8f">②运回肝</text>
+        <text x="648" y="160" font-size="10" fill="#b6881a">③变胆汁排入肠</text>
+        <text x="500" y="150" font-size="10" fill="#e4572e">↺ 肠肝循环：大部分被重吸收</text>
+      </g>
+    </svg>
+    <div class="cap">红色虚线是关键：肠道里的胆汁酸<strong>约 95% 会被重新吸收回肝脏循环使用</strong>（肠肝循环）。只有被“拦截”掉的那部分才真正排出体外——这给了膳食纤维一个发力点。</div>
+  </div>
+
+  <h3>二、逆向胆固醇转运：HDL 的真正工作</h3>
+  <p>把外周组织（包括血管壁）里多余的胆固醇<strong>收集起来、运回肝脏排掉</strong>，这个全过程叫<strong>逆向胆固醇转运（RCT）</strong>，HDL 是主角。注意课程 2 的更正：重要的不是“HDL 数值高”，而是<em>这套转运功能是否在高效运转</em>——这也是为什么单纯拉高 HDL 数字不一定带来保护。</p>
+
+  <h3>三、为什么膳食纤维能降胆固醇——机制就在这里</h3>
+  <p>可溶性膳食纤维（燕麦 β-葡聚糖、豆类、车前子壳等）进入肠道后，会<strong>抱住胆汁酸、阻止它们被重吸收</strong>，把它们带进粪便排掉。肝脏发现胆汁酸不够用，只好<em>动用更多血液胆固醇去合成新的胆汁酸</em>，于是血里的 LDL 被消耗、下降。</p>
+  <div class="callout good">
+    <span class="tag">这是你能动手的杠杆之一</span>
+    这条机制有扎实的人体试验支持：每天约 <strong>5–10 克可溶性纤维</strong>大约能让 LDL 下降 <strong>5–10%</strong>；把它和植物固醇、坚果、大豆蛋白组合成“组合膳食（Portfolio Diet）”，LDL 降幅可达约 <strong>17%</strong>（详见课程 9、10 的证据卡）。
+  </div>
+
+  <div class="callout">
+    <span class="tag">本课小结</span>
+    胆固醇不能被“烧掉”，只能经肝→胆汁→肠→粪便排出；胆汁酸约 95% 被肠肝循环回收；HDL 负责把外周多余胆固醇运回肝脏（逆向转运）；可溶性纤维通过拦截胆汁酸间接降 LDL。前五课的地基打好了——下一课，看这套系统一旦失衡，灾难是怎样发生的。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 6
+============================================================ -->
+<section class="wrap lesson" id="l6">
+  <span class="l-num">课程 06 · 失衡</span>
+  <h2 class="l-title">当系统失衡：动脉粥样硬化是怎样一步步形成的</h2>
+  <p class="l-lead">这是全课最重要的一课——它解释了“LDL 高”这个数字，究竟如何在几十年里，悄无声息地变成心梗或中风。看懂这张时间线，你就懂了为什么要趁早把 LDL 降下来。</p>
+
+  <h3>一、核心机制：太多 LDL，停留太久</h3>
+  <p>动脉的内壁有一层光滑的内皮。正常情况下 LDL 来去自如。但当血里 <span class="badge b-ldl">LDL 颗粒过多、停留时间过长</span>，就会有一部分<strong>渗进内皮下方、卡在动脉壁里</strong>。一旦进去，麻烦就开始连锁发生。</p>
+
+  <div class="figure">
+    <div class="fig-title">信息图 6.1 · 从一个 LDL 颗粒到一次心梗：六个阶段</div>
+    <div class="flow">
+      <div class="fstep"><div class="n">1</div><div class="body"><b>渗入 (Retention)</b>多余的 LDL 颗粒穿过血管内皮，<em>卡在动脉壁内层</em>。颗粒越小（如残余、小密 LDL）越容易钻进去、越难出来。</div></div>
+      <div class="fstep"><div class="n">2</div><div class="body"><b>氧化 (Oxidation)</b>困在壁里的 LDL 被<em>氧化、修饰</em>，变成一种身体不认识的“异物”，触发免疫警报。</div></div>
+      <div class="fstep"><div class="n">3</div><div class="body"><b>炎症召集 (Inflammation)</b>免疫系统派出<em>单核细胞</em>进入血管壁，变成巨噬细胞去“吃掉”这些氧化 LDL。这是一场本意为善的清理。</div></div>
+      <div class="fstep"><div class="n">4</div><div class="body"><b>泡沫细胞 (Foam cells)</b>巨噬细胞吃得太多、被胆固醇撑成<em>“泡沫细胞”</em>，最终死亡、堆积，形成血管壁里早期的“脂纹”。</div></div>
+      <div class="fstep"><div class="n">5</div><div class="body"><b>斑块形成 (Plaque)</b>脂质、死细胞、钙化与一层<em>纤维帽</em>逐渐堆成<strong>动脉粥样斑块</strong>，使血管变窄、变硬。这个过程可以悄无声息地进行几十年。</div></div>
+      <div class="fstep"><div class="n">6</div><div class="body"><b>破裂与血栓 (Rupture)</b>某天斑块的纤维帽<em>破裂</em>，身体以为是伤口，立刻形成<strong>血栓</strong>堵住血管。堵在心脏冠脉 → <span class="badge b-ldl">心肌梗死</span>；堵在脑血管 → <span class="badge b-ldl">中风</span>。</div></div>
+    </div>
+    <div class="cap">注意第 5 步“几十年”这个词：这正是为什么 LDL 偏高<strong>不是今晚的急症，但也绝不能无限拖延</strong>——它累积的是时间的债。</div>
+  </div>
+
+  <h3>二、两个让你既安心又不松懈的事实</h3>
+  <div class="grid2">
+    <div class="card" style="border-left:5px solid var(--hdl)">
+      <span class="badge b-hdl">让你安心</span>
+      <p style="margin-top:8px">这是一个<strong>缓慢、可干预</strong>的过程。把 LDL 降下来，可以<em>减缓、停止、甚至部分逆转</em>斑块进展。你现在采取行动，就是在改写未来几十年的曲线。时间站在你这边。</p>
+    </div>
+    <div class="card" style="border-left:5px solid var(--ldl)">
+      <span class="badge b-ldl">让你别松懈</span>
+      <p style="margin-top:8px">风险是<strong>“浓度 × 时间”的累积</strong>。LDL 高的每一年都在记账。所以越早把它控制到合理范围，<em>累积的总暴露量越少</em>，终身风险下降越多（课程 7 用数据证明这点）。</p>
+    </div>
+  </div>
+
+  <div class="callout key">
+    <span class="tag">把整条因果链一句话串起来</span>
+    <strong>LDL 多 → 渗入血管壁 → 氧化 → 炎症 → 斑块 → 破裂 → 心梗/中风。</strong>这条链上，最上游、最可控、证据最硬的那个开关，就是 <span class="badge b-ldl">LDL 的浓度</span>。这就是为什么全世界的指南都把“降 LDL”作为防治心血管病的头号杠杆。下一课，我们用三类独立证据，证明这条因果链不是假说，而是被反复验证的事实。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 7
+============================================================ -->
+<section class="wrap lesson" id="l7">
+  <span class="l-num">课程 07 · 因果证据</span>
+  <h2 class="l-title">为什么说 LDL 是“元凶”：因果证据的三角验证</h2>
+  <p class="l-lead">“相关不等于因果。” 这句话非常对，所以科学界没有满足于“LDL 高的人心梗多”这种观察。他们用三条互相独立的证据线，从三个完全不同的角度同时指向同一个结论。三角都吻合，结论才站得住。</p>
+
+  <h3>证据线一：基因（孟德尔随机化）——大自然做的随机对照试验</h3>
+  <p>有些人天生携带让 LDL 略低的基因变异，有些人天生略高。这种“分配”在受孕时就由基因<strong>随机决定</strong>，不受生活方式、收入、习惯干扰——相当于大自然替我们做了一场长达一生的随机试验。结果非常清楚：<em>天生 LDL 略低的人，一辈子心血管病明显更少</em>。</p>
+
+  <div class="paper">
+    <div class="j">JACC · Ference 等 (2012) · 孟德尔随机化</div>
+    <div class="t">终身暴露于较低 LDL，对冠心病风险的影响</div>
+    <div class="f">汇总多个基因变异、超 31 万人的数据，分析“从出生起 LDL 就略低”的人群。</div>
+    <div class="conc"><strong>结论：</strong>每终身降低 1 mmol/L 的 LDL，冠心病风险降低约 <strong>54.5%</strong>——大约是中年才开始吃他汀（约 20% 降幅）的 <strong>三倍</strong>。证明“<em>越早、越久地把 LDL 控低，收益越大</em>”。</div>
+  </div>
+
+  <h3>证据线二：随机对照试验（他汀大荟萃）——主动降 LDL，事件就减少</h3>
+  <p>如果 LDL 只是“旁观者”，那么用药把它降下来应该没用。但几十项严格的随机双盲试验、累计十几万人的数据反复证明：<strong>主动降 LDL，心梗和中风就成比例减少</strong>。这是因果关系最有力的证据类型。</p>
+
+  <div class="paper">
+    <div class="j">The Lancet · 胆固醇治疗试验协作组 (CTT)</div>
+    <div class="t">他汀降 LDL 与主要血管事件的荟萃分析（约 17 万人 / 26–27 项试验）</div>
+    <div class="f">合并个体患者数据，评估 LDL 每降低单位幅度对应的事件变化。</div>
+    <div class="conc"><strong>结论：</strong>LDL 每降低 1 mmol/L（约 39 mg/dL），主要血管事件（心梗、中风、血运重建）风险下降约 <strong>21–22%</strong>，且<em>在低风险人群中同样获益</em>，并未增加癌症或非血管死亡风险。</div>
+  </div>
+
+  <div class="paper">
+    <div class="j">European Heart Journal · 欧洲动脉粥样硬化学会 (EAS) 共识 (2017)</div>
+    <div class="t">低密度脂蛋白导致动脉粥样硬化性心血管疾病：来自基因、流行病学与临床研究的证据</div>
+    <div class="f">汇总超过 2000 万人·年的证据，横跨基因、流行病学、孟德尔随机化与随机试验四类研究。</div>
+    <div class="conc"><strong>结论：</strong>所有证据一致满足“因果”判定标准——LDL <strong>不只是风险标志物，而是动脉粥样硬化的因果致病因素</strong>。这份共识被视为给“LDL 因果论”盖棺定论的文件。</div>
+  </div>
+
+  <h3>证据线三：剂量—时间关系——“越低越好、越久越好”</h3>
+  <p>真正的因果关系通常有“剂量反应”：降得越多、效果越大；而 LDL 还多了一个时间维度——<strong>暴露的时长同样重要</strong>。把三类研究的数字并排放，会看到一个漂亮的递进：</p>
+
+  <div class="figure">
+    <div class="fig-title">信息图 7.1 · 同样降 1 mmol/L LDL，持续越久收益越大</div>
+    <div class="bars">
+      <div class="bar-row"><div class="lab">他汀 ~5 年</div><div class="bar-track"><div class="bar-fill" style="width:22%;background:var(--ldl)"></div></div><div class="val">≈22%</div></div>
+      <div class="bar-row"><div class="lab">长期观察 ~15 年</div><div class="bar-track"><div class="bar-fill" style="width:33%;background:var(--tg)"></div></div><div class="val">≈33%</div></div>
+      <div class="bar-row"><div class="lab">终身（基因）</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:var(--hdl)"></div></div><div class="val">≈54%</div></div>
+    </div>
+    <div class="cap">纵轴是“冠心病风险下降幅度”，三组对应的 LDL 降幅都是 1 mmol/L。差别只在<strong>持续时间</strong>。这就是“lower for longer（越低越久越好）”这一现代核心理念的数据来源（数据：CTT、长期队列、Ference 孟德尔随机化）。</div>
+  </div>
+
+  <div class="callout good">
+    <span class="tag">这对你意味着什么——一个真正让人安心的推论</span>
+    “终身暴露”的逻辑有一个温暖的反面：<strong>你现在 30、40 多岁就发现并开始管理 LDL，恰恰是收益最高的时间窗。</strong>你不是“出了问题”，而是<em>提前拿到了一张可以兑现几十年的优惠券</em>。早发现是好运，不是坏消息。
+  </div>
+
+  <div class="callout">
+    <span class="tag">本课小结</span>
+    三条独立证据线（基因 / 随机试验 / 剂量—时间）在同一点交汇：<strong>LDL 是因果致病因素，且越低越久越好。</strong>这不是某一篇论文的观点，而是数百万人数据的共识。下一课，看看另一条被低估的风险线——甘油三酯与残余胆固醇。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 8
+============================================================ -->
+<section class="wrap lesson" id="l8">
+  <span class="l-num">课程 08 · 甘油三酯</span>
+  <h2 class="l-title">甘油三酯与残余胆固醇：被低估的另一条风险线</h2>
+  <p class="l-lead">很多人只盯着 LDL，但化验单上的甘油三酯同样重要。它不仅是“脂肪储能”的指标，还牵出一个近十年才被充分认识的独立风险因素——残余胆固醇。它也常常是“代谢综合征”的第一个信号。</p>
+
+  <h3>一、甘油三酯是什么</h3>
+  <p><span class="badge b-tg">甘油三酯（triglyceride, TG）</span>是身体储存能量的主要形式。你吃下的多余热量（尤其是<strong>精制碳水、糖、酒精</strong>）会被肝脏转化成甘油三酯，装进 VLDL 送进血液或存进脂肪组织。所以高甘油三酯往往反映：<em>吃进来的能量超过了消耗，或代谢处理能力下降</em>。</p>
+
+  <table>
+    <tr><th>甘油三酯水平</th><th>mmol/L</th><th>mg/dL</th></tr>
+    <tr><td>理想</td><td class="num">&lt; 1.7</td><td class="num">&lt; 150</td></tr>
+    <tr><td>临界偏高</td><td class="num">1.7 – 2.2</td><td class="num">150 – 199</td></tr>
+    <tr><td>偏高</td><td class="num">2.3 – 5.6</td><td class="num">200 – 499</td></tr>
+    <tr><td>极高（有急性胰腺炎风险）</td><td class="num">&ge; 5.7</td><td class="num">&ge; 500</td></tr>
+  </table>
+
+  <h3>二、真正的“坏家伙”：残余胆固醇</h3>
+  <p>这里有个微妙但重要的科学更新。研究发现：<strong>甘油三酯本身可能不直接堵血管</strong>，但<em>装载甘油三酯的那些颗粒（VLDL、残余/IDL）里所含的胆固醇</em>——也就是<strong>残余胆固醇（remnant cholesterol）</strong>——能像 LDL 一样钻进血管壁致病。换句话说，高甘油三酯之所以危险，很大程度是因为它<strong>伴随着大量残余胆固醇</strong>。</p>
+
+  <div class="paper">
+    <div class="j">JACC / Circulation · Nordestgaard 团队 · 孟德尔随机化与大型队列</div>
+    <div class="t">残余胆固醇是缺血性心脏病的因果风险因素</div>
+    <div class="f">基于哥本哈根数十万人队列与基因证据，区分“甘油三酯”与“残余胆固醇”各自的作用。</div>
+    <div class="conc"><strong>结论：</strong>升高的残余胆固醇与<strong>因果性</strong>的缺血性心脏病风险升高相关，独立于 LDL；高甘油三酯/残余胆固醇还与全身<em>低度炎症</em>相关。提示：当你 LDL 与甘油三酯都偏高时，叠加风险更需重视。</div>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">为什么医生有时更看“非 HDL 胆固醇”</span>
+    回忆课程 2：<strong>非 HDL 胆固醇 = 总胆固醇 − HDL</strong>。它一次性囊括了 LDL + VLDL + 残余 + Lp(a) 里<em>所有</em>的致病胆固醇。当一个人甘油三酯偏高时，单看 LDL 会<strong>低估</strong>真实风险，而“非 HDL”能把残余胆固醇也算进去，因此越来越被推荐作为关键治疗目标（通常目标值 = LDL 目标 + 0.8 mmol/L）。
+  </div>
+
+  <h3>三、甘油三酯高，常常是“代谢综合征”的信号灯</h3>
+  <p>高甘油三酯很少独来独往。它经常和下面几条结伴出现，合称<strong>代谢综合征</strong>——一组显著放大心血管与糖尿病风险的状态：</p>
+  <div class="grid3">
+    <div class="card"><span class="badge b-tg">腰围偏大</span><p style="margin-top:6px">内脏脂肪堆积（男性 ≥90cm / 女性 ≥85cm，亚洲标准）</p></div>
+    <div class="card"><span class="badge b-tg">甘油三酯高</span><p style="margin-top:6px">≥ 1.7 mmol/L</p></div>
+    <div class="card"><span class="badge b-tg">HDL 低</span><p style="margin-top:6px">男性 &lt;1.0 / 女性 &lt;1.3 mmol/L</p></div>
+    <div class="card"><span class="badge b-tg">血压偏高</span><p style="margin-top:6px">≥ 130/85 mmHg</p></div>
+    <div class="card"><span class="badge b-tg">空腹血糖偏高</span><p style="margin-top:6px">≥ 5.6 mmol/L</p></div>
+    <div class="card"><span class="badge b-hdl">好消息</span><p style="margin-top:6px">这一组对<em>减重、运动、减糖减酒</em>的反应非常好，常常一起改善。</p></div>
+  </div>
+
+  <div class="callout good">
+    <span class="tag">应对甘油三酯的杠杆和降 LDL 不完全一样</span>
+    降 LDL 主攻“饱和脂肪 + 药物”；而降甘油三酯主攻 <strong>减少精制糖与酒精、减重、运动、增加 ω-3（深海鱼/鱼油）</strong>。两条线的对策可以叠加，互不矛盾。
+  </div>
+
+  <div class="callout">
+    <span class="tag">本课小结</span>
+    甘油三酯反映能量过剩与代谢状态；真正致病的是它携带的残余胆固醇（已被证明是独立因果因素）；当甘油三酯高时用“非 HDL 胆固醇”衡量风险更准；高甘油三酯常是代谢综合征的信号，但对生活方式反应很好。下面进入完全为你定制的两课。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 9 —— 个性化核心
+============================================================ -->
+<section class="wrap lesson" id="l9">
+  <span class="l-num">课程 09 · 你的情况</span>
+  <h2 class="l-title">影响 LDL 的因素，按“影响力”排序 + 对策</h2>
+  <p class="l-lead">你测出 LDL 偏高，最想问的一定是：<strong>到底是什么把它推高的？我先改哪个最划算？</strong>这一课就回答这个。下面把主要影响因素按“对 LDL 的影响力 / 可改变性”排序，并给出每一项的具体对策。请记住：每个人的主导因素不同，这张表帮你和医生一起找出<em>你的</em>那几个。</p>
+
+  <!-- 影响力排序信息图 -->
+  <div class="figure">
+    <div class="fig-title">信息图 9.1 · 影响 LDL 的因素 —— 按典型影响力排序</div>
+    <div class="bars">
+      <div class="bar-row"><div class="lab">① 基因 / 家族性</div><div class="bar-track"><div class="bar-fill" style="width:95%;background:var(--ldl)"></div></div><div class="val">最大</div></div>
+      <div class="bar-row"><div class="lab">② 饱和+反式脂肪</div><div class="bar-track"><div class="bar-fill" style="width:80%;background:#ef7d4e"></div></div><div class="val">大</div></div>
+      <div class="bar-row"><div class="lab">③ 体重/内脏脂肪</div><div class="bar-track"><div class="bar-fill" style="width:62%;background:var(--tg)"></div></div><div class="val">中-大</div></div>
+      <div class="bar-row"><div class="lab">④ 纤维/植物固醇(缺)</div><div class="bar-track"><div class="bar-fill" style="width:50%;background:#8a9bd6"></div></div><div class="val">中</div></div>
+      <div class="bar-row"><div class="lab">⑤ 身体活动不足</div><div class="bar-track"><div class="bar-fill" style="width:38%;background:var(--chol)"></div></div><div class="val">中-小</div></div>
+      <div class="bar-row"><div class="lab">⑥ 继发因素*</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:#7c8aa3"></div></div><div class="val">视情况</div></div>
+    </div>
+    <div class="cap">*继发因素=甲状腺功能减退、未控制的糖尿病、肾/肝病、某些药物等。它们对个别人可能是<strong>主导</strong>因素，所以排在“视情况”而非固定高低。条形长度表示“典型人群中的相对影响力”，不是精确百分比。</div>
+  </div>
+
+  <h3>① 基因 / 家族性高胆固醇血症 —— 影响最大，但不可“怪自己”</h3>
+  <p>这是对很多人 LDL 水平<strong>影响最大</strong>的单一因素，却也是最常被忽视的。基因决定了你的 LDL 受体数量、肝脏合成的“设定值”。如果你饮食已经不错、体重也正常，LDL 却仍明显偏高，<em>基因很可能是主角</em>。</p>
+  <div class="callout warn">
+    <span class="tag">对策</span>
+    ① 主动向医生提供<strong>家族史</strong>（父母/兄弟姐妹是否早发心梗、中风、高胆固醇）。② 若 LDL ≥4.9 mmol/L 或有早发家族史，请医生评估是否为 <strong>FH</strong>。③ 基因因素<strong>不代表只能认命</strong>——它恰恰是他汀等药物<em>最该、也最有效</em>发挥作用的场景；同时生活方式仍能叠加帮助。这不是你的错，是你的设定值，而设定值可以被调整。
+  </div>
+
+  <h3>② 饮食中的饱和脂肪与反式脂肪 —— 最大的“可改变”饮食杠杆</h3>
+  <p>如课程 3 所讲，它们通过<strong>压低肝脏 LDL 受体</strong>直接推高血 LDL。这是<em>你能动手且效果明确</em>的第一饮食杠杆。</p>
+  <table>
+    <tr><th>减少 / 替换</th><th>常见来源</th><th>替换成</th></tr>
+    <tr><td><span class="badge b-ldl">饱和脂肪</span></td><td>肥肉、动物油脂、黄油、奶油、椰子油/棕榈油、全脂乳、加工肉</td><td>橄榄油、菜籽油等<strong>不饱和植物油</strong>；鱼、禽、豆制品</td></tr>
+    <tr><td><span class="badge b-ldl">反式脂肪</span></td><td>部分氢化油、人造奶油、起酥糕点、油炸快餐</td><td>尽量<strong>归零</strong>——看配料表避开“氢化植物油”</td></tr>
+  </table>
+  <p>用不饱和脂肪替换饱和脂肪，多项研究显示可降 LDL <strong>约 5–15%</strong>，且替换比单纯“吃少”更有效。</p>
+
+  <div class="paper">
+    <div class="j">New England Journal of Medicine · PREDIMED 随机对照试验</div>
+    <div class="t">地中海饮食（特级初榨橄榄油 / 坚果）对心血管事件的一级预防</div>
+    <div class="f">约 7,400 名高风险者随机分组，长期随访硬终点（心梗、中风、心血管死亡）。</div>
+    <div class="conc"><strong>结论：</strong>地中海饮食组主要心血管事件相对下降约 <strong>30%</strong>。这是“饮食模式”而非单一营养素能改善<em>硬终点</em>的少数高质量证据之一——支持把整体饮食结构转向地中海式。</div>
+  </div>
+
+  <h3>③ 体重与内脏脂肪 / 胰岛素抵抗 —— 同时改善 LDL、甘油三酯、HDL</h3>
+  <p>超重、尤其腹部内脏脂肪，会同时推高 LDL 与甘油三酯、压低 HDL。减重的好处是<strong>“一箭三雕”</strong>——三个指标一起改善。即便只减 <em>5–10% 体重</em>，血脂谱通常已有明显好转。</p>
+  <div class="callout"><span class="tag">对策</span>以温和、可持续的热量缺口为主（不必极端）；优先减少含糖饮料、精制碳水与酒精——它们对内脏脂肪和甘油三酯影响最大。配合下面的运动效果更好。</div>
+
+  <h3>④ 膳食纤维 / 植物固醇摄入不足 —— 缺了它，等于少用一个免费杠杆</h3>
+  <p>如课程 5 的机制，可溶性纤维拦截胆汁酸、间接降 LDL；植物固醇则在肠道<strong>竞争性阻挡胆固醇吸收</strong>。这两个是<em>纯靠食物、无副作用</em>的降 LDL 工具。</p>
+
+  <div class="figure">
+    <div class="fig-title">信息图 9.2 · 几种“吃出来”的降 LDL 工具及其大致幅度</div>
+    <div class="bars">
+      <div class="bar-row"><div class="lab">组合膳食(Portfolio)</div><div class="bar-track"><div class="bar-fill" style="width:85%;background:var(--hdl)"></div></div><div class="val">~17%</div></div>
+      <div class="bar-row"><div class="lab">植物固醇 2g/天</div><div class="bar-track"><div class="bar-fill" style="width:55%;background:#3fb0a2"></div></div><div class="val">~6–12%</div></div>
+      <div class="bar-row"><div class="lab">可溶纤维 5–10g/天</div><div class="bar-track"><div class="bar-fill" style="width:45%;background:#5cc0b4"></div></div><div class="val">~5–10%</div></div>
+      <div class="bar-row"><div class="lab">燕麦β-葡聚糖 3g/天</div><div class="bar-track"><div class="bar-fill" style="width:32%;background:#7fd0c6"></div></div><div class="val">~5–7%</div></div>
+    </div>
+    <div class="cap">数据来源：膳食纤维、燕麦 β-葡聚糖、植物固醇及组合膳食（Portfolio Diet, Jenkins 等）的随机对照试验荟萃分析。注意这些幅度<strong>可以叠加</strong>，组合起来相当可观。</div>
+  </div>
+  <div class="callout good"><span class="tag">对策（具体食物）</span>燕麦、大麦、豆类、苹果/柑橘、车前子壳（psyllium）补充可溶性纤维；坚果（每日一小把）；大豆蛋白（豆腐、豆浆）；以及添加植物甾醇的产品。把它们组合进每日三餐，就是“组合膳食”。</div>
+
+  <h3>⑤ 身体活动不足 —— 对 LDL 影响中等，但对甘油三酯/HDL 很好</h3>
+  <p>规律有氧运动对 LDL 的直接降幅通常<strong>温和</strong>，但它显著<em>降甘油三酯、升 HDL、改善胰岛素敏感性、辅助减重</em>，且独立降低心血管风险。所以它的价值远超“LDL 那一个数字”。</p>
+  <div class="callout"><span class="tag">对策</span>目标：每周 <strong>≥150 分钟中等强度有氧</strong>（快走、慢跑、骑车、游泳），外加每周 2 次抗阻训练。从你能坚持的强度开始，规律性比强度更重要。</div>
+
+  <h3>⑥ 继发因素 —— 别漏掉这些“幕后推手”</h3>
+  <p>有时 LDL 高是<strong>其他问题的结果</strong>，找到并处理它，LDL 会跟着好转：</p>
+  <ul>
+    <li><strong>甲状腺功能减退</strong>：是常见且容易漏诊的可逆原因，建议查 TSH。</li>
+    <li><strong>未控制的糖尿病 / 胰岛素抵抗</strong>、<strong>慢性肾病、肝胆疾病</strong>。</li>
+    <li><strong>某些药物</strong>：部分利尿剂、糖皮质激素、某些免疫抑制剂等。</li>
+    <li><strong>吸烟</strong>（损伤血管、降 HDL）、<strong>过量饮酒</strong>、<strong>女性绝经后</strong>雌激素下降。</li>
+  </ul>
+  <div class="callout warn"><span class="tag">对策</span>请医生在评估血脂时，<strong>顺带排查甲状腺(TSH)、血糖(HbA1c)、肝肾功能</strong>，并复核你在服的药物。戒烟是对整体心血管风险<em>性价比最高</em>的单项行动之一。</div>
+
+  <div class="callout key">
+    <span class="tag">本课小结 —— 给你的“先做什么”优先级</span>
+    <strong>第一步</strong>：和医生一起判断你的主导因素（尤其排查基因/FH 与继发因素）。<strong>第二步</strong>：动手做可改变的三件高杠杆事——① 用不饱和脂肪替换饱和/反式脂肪并转向地中海饮食；② 若超重则温和减重、减糖减酒；③ 每天加足可溶性纤维+植物固醇。<strong>第三步</strong>：加上规律运动与戒烟。<strong>第四步</strong>：若 3–6 个月后仍未达标，或你属于高风险/FH，与医生讨论药物。下一课把这些拼成一张带时间表的行动计划。
+  </div>
+</section>
+
+<!-- ============================================================
+     课程 10 —— 行动 + 监测
+============================================================ -->
+<section class="wrap lesson" id="l10">
+  <span class="l-num">课程 10 · 行动与监测</span>
+  <h2 class="l-title">行动计划：目标值、做什么、多久复查、何时该用药</h2>
+  <p class="l-lead">最后一课把前九课变成一张你可以贴在冰箱上的执行表。它回答你最关心的两个操作问题：<strong>我的目标该是多少？我多久复查一次才知道有没有效果？</strong></p>
+
+  <h3>一、你的目标值取决于“整体风险”，不是只看 LDL 一个数</h3>
+  <p>关键观念：<strong>没有适用于所有人的单一“正常值”。</strong>同样的 LDL，对一个无任何风险因素的年轻人，和对一个有糖尿病、高血压、吸烟史的人，意义完全不同。医生会综合你的年龄、血压、血糖、吸烟、家族史等算出风险等级，再定目标。下面是被广泛采用的 <strong>2019 ESC/EAS 血脂指南</strong>分层目标：</p>
+
+  <div class="figure">
+    <div class="fig-title">信息图 10.1 · LDL 目标阶梯（按心血管风险等级，2019 ESC/EAS）</div>
+    <div class="ladder">
+      <div class="step" style="background:var(--hdl)"><span>低风险</span><span>LDL &lt; 3.0 mmol/L（&lt;116 mg/dL）</span></div>
+      <div class="step" style="background:#5bbf8f"><span>中风险</span><span>LDL &lt; 2.6 mmol/L（&lt;100 mg/dL）</span></div>
+      <div class="step" style="background:var(--tg)"><span>高风险</span><span>LDL &lt; 1.8 mmol/L（&lt;70 mg/dL）且较基线降≥50%</span></div>
+      <div class="step" style="background:var(--ldl)"><span>极高风险</span><span>LDL &lt; 1.4 mmol/L（&lt;55 mg/dL）且较基线降≥50%</span></div>
+    </div>
+    <div class="cap">风险越高，目标越严。<strong>“极高/高风险”包括</strong>：已有心血管病、糖尿病伴并发症、家族性高胆固醇血症、重度慢性肾病等。<strong>请让医生告诉你属于哪一层、目标是多少</strong>——这是你这次就诊最该问清楚的一句话。换算：1 mmol/L ≈ 38.7 mg/dL。</div>
+  </div>
+
+  <h3>二、12 周生活方式行动计划（先从这里开始）</h3>
+  <div class="grid3">
+    <div class="card" style="border-top:4px solid var(--hdl)">
+      <h4>第 1–2 周 · 打基础</h4>
+      <ul style="font-size:14.5px">
+        <li>清查厨房：移除反式脂肪、减少黄油/肥肉/全脂乳</li>
+        <li>把炒菜油换成橄榄油/菜籽油</li>
+        <li>记录一周饮食，找出隐藏饱和脂肪与糖</li>
+        <li>确定一项你能坚持的运动</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--tg)">
+      <h4>第 3–8 周 · 加杠杆</h4>
+      <ul style="font-size:14.5px">
+        <li>早餐加燕麦；每天豆类/全谷物</li>
+        <li>每日一小把坚果；多吃蔬果</li>
+        <li>每周 ≥150 分钟中等有氧 + 2 次力量</li>
+        <li>减含糖饮料与酒精；每周 2 次深海鱼</li>
+        <li>若超重，建立温和热量缺口</li>
+      </ul>
+    </div>
+    <div class="card" style="border-top:4px solid var(--ldl)">
+      <h4>第 9–12 周 · 巩固+评估</h4>
+      <ul style="font-size:14.5px">
+        <li>把上述变成稳定习惯</li>
+        <li>考虑加植物甾醇产品</li>
+        <li>第 12 周后<strong>复查血脂</strong>看效果</li>
+        <li>带结果找医生，决定是否需要药物</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>三、多久复查一次？—— 你最关心的监测时间表</h3>
+  <p>复查的核心原则：<strong>给干预足够起效的时间，又不要久到错过调整时机。</strong>血脂对生活方式或药物的反应一般需要 <em>6–12 周</em>才稳定，所以太频繁地测意义不大。下面是一个实用节奏：</p>
+
+  <div class="figure">
+    <div class="fig-title">信息图 10.2 · 复查时间表</div>
+    <div class="flow">
+      <div class="fstep"><div class="n">0</div><div class="body"><b>现在 · 基线</b>拿到一份完整血脂谱（总胆固醇、LDL、HDL、甘油三酯、最好含非 HDL/ApoB），并让医生评估整体风险、排查继发因素（TSH、血糖、肝肾）。这是你的起点坐标。</div></div>
+      <div class="fstep"><div class="n">1</div><div class="body"><b>开始生活方式干预后 · 约 8–12 周复查</b>足够让饮食/运动的效果显现。对比基线，看 LDL 与甘油三酯降了多少。</div></div>
+      <div class="fstep"><div class="n">2</div><div class="body"><b>若开始或调整药物 · 约 4–12 周复查</b>他汀等药物起效快，通常 <em>4–12 周</em>即可看到 LDL 明显下降，并据此调整剂量。（部分指南建议用药后 4–6 周即查。）</div></div>
+      <div class="fstep"><div class="n">3</div><div class="body"><b>达标后 · 每 6–12 个月复查</b>确认稳定维持在目标值。多数稳定人群一年一次即可。</div></div>
+      <div class="fstep"><div class="n">4</div><div class="body"><b>长期 · 每年 1 次 + 风险变化时随时</b>体重、用药、健康状况有较大变化时，提前复查。</div></div>
+    </div>
+    <div class="cap">小贴士：尽量在<strong>同一实验室、相似条件</strong>下复查，便于横向比较。LDL 传统上要求空腹检测，但现代指南认为多数情况下<em>非空腹也可</em>，甘油三酯极高者除外——以你医生的要求为准。</div>
+  </div>
+
+  <h3>四、什么时候该考虑药物？</h3>
+  <p>生活方式是地基，但它有“天花板”——单靠饮食运动通常降 LDL 约 10–20%。如果你的<strong>风险等级高、目标值严、或属于 FH</strong>，仅靠生活方式往往不够，这时药物不是“失败”，而是<em>对症的正确工具</em>。请和医生讨论以下情形：</p>
+  <ul>
+    <li>属于高 / 极高风险，但生活方式 3–6 个月后仍未达标；</li>
+    <li>LDL 基线很高（如 ≥4.9 mmol/L）或确诊/疑似 FH——往往需尽早用药；</li>
+    <li>已有心血管病、糖尿病等——通常直接需要他汀。</li>
+  </ul>
+  <p>常用药物阶梯：<strong>他汀</strong>（一线，降 LDL 强、证据最硬）→ 不够则加<strong>依折麦布(ezetimibe)</strong>（减少肠道吸收）→ 仍不够或不耐受则用 <strong>PCSK9 抑制剂</strong>等。所有药物都需医生处方与随访。</p>
+  <div class="callout"><span class="tag">关于他汀的安全顾虑</span>如课程 7 引用的 CTT 大型荟萃所示，他汀的获益（减少心梗、中风）在大量人群中<strong>远超其风险</strong>，且并未增加癌症或非血管死亡。常见的肌肉不适多数可通过换药/调量解决。把顾虑<em>具体地</em>讲给医生，通常都有解决方案。</div>
+
+  <h3>五、最有影响力的研究 · 一页总表</h3>
+  <table>
+    <tr><th>研究 / 文献</th><th>类型</th><th>核心结论（与你相关）</th></tr>
+    <tr><td>EAS 共识声明 (2017)</td><td>证据汇总</td><td>LDL 是动脉粥样硬化的<strong>因果</strong>因素，不只是标志物</td></tr>
+    <tr><td>CTT 协作组荟萃 (Lancet)</td><td>RCT 荟萃</td><td>LDL 每降 1 mmol/L，主要血管事件↓约 <strong>21–22%</strong></td></tr>
+    <tr><td>Ference 等 (2012, JACC)</td><td>孟德尔随机化</td><td>终身 LDL 每低 1 mmol/L，冠心病风险↓约 <strong>54%</strong>——越早越久越好</td></tr>
+    <tr><td>Nordestgaard 等</td><td>孟德尔随机化</td><td><strong>残余胆固醇</strong>是独立因果风险因素；高甘油三酯之危险在此</td></tr>
+    <tr><td>PREDIMED (NEJM)</td><td>RCT</td><td>地中海饮食使心血管事件↓约 <strong>30%</strong></td></tr>
+    <tr><td>Portfolio Diet (Jenkins 等)</td><td>RCT 荟萃</td><td>组合膳食可降 LDL 约 <strong>17%</strong>（纯食物）</td></tr>
+    <tr><td>燕麦β-葡聚糖/植物固醇荟萃</td><td>RCT 荟萃</td><td>纤维与固醇分别降 LDL <strong>5–12%</strong>，可叠加</td></tr>
+    <tr><td>2019 ESC/EAS 指南</td><td>临床指南</td><td>按风险分层设定 LDL 目标（1.4 / 1.8 / 2.6 / 3.0）</td></tr>
+  </table>
+
+  <div class="callout good">
+    <span class="tag">写在最后 —— 给睡前的你</span>
+    把这件事想成一个<strong>有清晰指标、有有效工具、有充足时间</strong>的项目，而不是一个悬在头顶的判决。你已经做了最重要的一步：<em>去测了，并且愿意理解它</em>。剩下的就是：① 找医生确认你的风险等级与目标值；② 动手做高杠杆的几件事；③ 约 12 周后复查，用数字验证效果。每一步都清楚、可控、可衡量。你完全有能力把这条曲线掰向对你有利的方向。安心睡吧。
+  </div>
+</section>
+
+<!-- ===== 参考文献 ===== -->
+<section class="wrap lesson" id="refs">
+  <span class="l-num">参考与延伸阅读</span>
+  <h2 class="l-title">最有影响力的研究来源</h2>
+  <p class="l-lead">以下为本教程引用的里程碑式研究与权威指南。建议你把<strong>带 ★ 的两三篇</strong>的结论打印出来，下次就诊时与医生讨论你的个体化方案。</p>
+  <div class="card">
+    <ol class="refs">
+      <li>★ <strong>Ference BA, et al.</strong> Low-density lipoproteins cause atherosclerotic cardiovascular disease. 1. Evidence from genetic, epidemiologic, and clinical studies. A consensus statement from the European Atherosclerosis Society Consensus Panel. <em>European Heart Journal</em>, 2017. <a href="https://academic.oup.com/eurheartj/article/38/32/2459/3745109">academic.oup.com/eurheartj/article/38/32/2459</a></li>
+      <li>★ <strong>Cholesterol Treatment Trialists' (CTT) Collaboration.</strong> Efficacy and safety of more intensive lowering of LDL cholesterol: a meta-analysis of data from 170,000 participants in 26 randomised trials. <em>The Lancet</em>, 2010. <a href="https://www.thelancet.com/article/S0140-6736(10)61350-5/fulltext">thelancet.com/article/S0140-6736(10)61350-5</a></li>
+      <li><strong>CTT Collaboration.</strong> The effects of lowering LDL cholesterol with statin therapy in people at low risk of vascular disease: meta-analysis of 27 randomised trials. <em>The Lancet</em>, 2012. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(12)60367-5/fulltext">thelancet.com/journals/lancet/PIIS0140-6736(12)60367-5</a></li>
+      <li>★ <strong>Ference BA, et al.</strong> Effect of long-term exposure to lower LDL cholesterol beginning early in life on the risk of coronary heart disease: a Mendelian randomization analysis. <em>JACC</em>, 2012. <a href="https://www.jacc.org/doi/10.1016/j.jacc.2012.09.017">jacc.org/doi/10.1016/j.jacc.2012.09.017</a></li>
+      <li><strong>Ference BA, et al.</strong> The LDL cumulative exposure hypothesis: evidence and practical applications. <em>Nature Reviews Cardiology</em>, 2024. <a href="https://www.nature.com/articles/s41569-024-01039-5">nature.com/articles/s41569-024-01039-5</a></li>
+      <li><strong>Varbo A, Nordestgaard BG, et al.</strong> Remnant cholesterol as a causal risk factor for ischemic heart disease. <em>JACC</em>, 2013. <a href="https://www.jacc.org/doi/10.1016/j.jacc.2012.08.1026">jacc.org/doi/10.1016/j.jacc.2012.08.1026</a></li>
+      <li><strong>Estruch R, et al. (PREDIMED).</strong> Primary prevention of cardiovascular disease with a Mediterranean diet supplemented with extra-virgin olive oil or nuts. <em>New England Journal of Medicine</em>, 2018 (重新发表). <a href="https://www.ahajournals.org/doi/10.1161/CIRCRESAHA.118.313348">综述：ahajournals.org/doi/10.1161/CIRCRESAHA.118.313348</a></li>
+      <li><strong>Mach F, et al.</strong> 2019 ESC/EAS Guidelines for the management of dyslipidaemias. <em>European Heart Journal</em>, 2020. <a href="https://eas-society.org/wp-content/uploads/2022/11/2019_dyslipidaemias_guidelin.pdf">eas-society.org/.../2019_dyslipidaemias_guidelin.pdf</a></li>
+      <li><strong>Whitehead A, et al.</strong> Cholesterol-lowering effects of oat β-glucan: a meta-analysis of randomized controlled trials. <em>Am J Clin Nutr</em>. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5394769/">pmc.ncbi.nlm.nih.gov/articles/PMC5394769</a></li>
+      <li><strong>Ras RT, et al.</strong> LDL-cholesterol-lowering effect of plant sterols and stanols across different dose ranges: a meta-analysis. <em>Br J Nutr</em>. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4071994/">ncbi.nlm.nih.gov/pmc/articles/PMC4071994</a></li>
+      <li><strong>Brown L, et al.</strong> Cholesterol-lowering effects of dietary fiber: a meta-analysis. <em>Am J Clin Nutr</em>. <a href="https://pubmed.ncbi.nlm.nih.gov/9925120/">pubmed.ncbi.nlm.nih.gov/9925120</a></li>
+      <li><strong>Effects of aerobic exercise on blood lipids:</strong> systematic review and meta-analysis of RCTs. <em>PMC</em>, 2024. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11856645/">pmc.ncbi.nlm.nih.gov/articles/PMC11856645</a></li>
+    </ol>
+  </div>
+  <div class="disclaimer">
+    <strong>再次提醒：</strong>本报告整合的研究结论用于帮助你理解与决策，<strong>不构成个体化医疗建议</strong>。研究中的平均效应不一定等于你个人的反应。请把本报告当作“与医生高效沟通的工具”，最终方案以临床医生的判断为准。
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+  <div class="wrap">
+    <p><strong>胆固醇全解 · 十课教学报告</strong> —— 从分子到行动方案</p>
+    <p>本文件为纯本地 HTML，可离线打开、可用浏览器“打印 / 另存为 PDF”导出约 30 页的报告（推荐 A4、含背景图形）。</p>
+    <p style="opacity:.7">教育用途 · 非医疗建议 · 个体方案请遵医嘱 · 编制日期 2026-06</p>
+  </div>
+</footer>
+
+<a href="#cover" class="totop" aria-label="返回顶部">↑</a>
+
+<script>
+  // 阅读进度条
+  const bar = document.getElementById('progress');
+  function upd(){
+    const h = document.documentElement;
+    const sc = h.scrollTop || document.body.scrollTop;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max>0 ? (sc/max*100) : 0) + '%';
+  }
+  document.addEventListener('scroll', upd, {passive:true});
+  window.addEventListener('resize', upd);
+  upd();
+</script>
+</body>
+</html>
