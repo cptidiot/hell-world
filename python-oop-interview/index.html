@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Python OOP · Technical Screening Bank — Full-Stack Data Scientist</title>
+<style>
+  /* ============================================================
+     Python OOP Screening Bank · self-contained, no dependencies
+     Minimalist: neutral ink + one accent, generous whitespace.
+     ============================================================ */
+  :root{
+    --ink:#1b2330; --soft:#5b6677; --faint:#8a94a3;
+    --paper:#fbfcfe; --card:#ffffff; --line:#e7ebf1; --line-2:#eef1f6;
+    --accent:#3b5bdb; --accent-soft:#eef1fd;
+    --f:#2f9e6f; --f-soft:#e8f6ef;   /* Foundational */
+    --m:#c98a16; --m-soft:#fbf2df;   /* Intermediate */
+    --a:#d04a4a; --a-soft:#fbeaea;   /* Advanced */
+    --code-bg:#f6f8fb; --code-ink:#243040;
+    --radius:12px;
+    --mono:"SF Mono",ui-monospace,"JetBrains Mono","Cascadia Code",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--paper);
+       line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+
+  /* topbar */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(251,252,254,.9);
+          backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .topbar-inner{max-width:1000px;margin:0 auto;padding:11px 24px;display:flex;
+                align-items:center;gap:14px;flex-wrap:wrap}
+  .brand{font-weight:700;letter-spacing:.2px;font-size:15px;white-space:nowrap}
+  .brand .py{color:var(--accent)}
+  .controls{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .seg button{font-family:inherit;font-size:12.5px;border:0;background:transparent;
+              color:var(--soft);padding:6px 13px;cursor:pointer;transition:.15s}
+  .seg button.on{background:var(--accent);color:#fff}
+  .chipbar{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-size:12px;color:var(--soft);background:transparent;border:1px solid var(--line);
+        padding:5px 11px;border-radius:999px;cursor:pointer;transition:.15s;font-family:inherit}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn-print{font-family:inherit;font-size:12px;color:var(--soft);background:transparent;
+             border:1px solid var(--line);padding:6px 12px;border-radius:999px;cursor:pointer}
+  .btn-print:hover{border-color:var(--accent);color:var(--accent)}
+
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+  /* hero */
+  .hero{padding:54px 0 30px;border-bottom:1px solid var(--line)}
+  .kicker{letter-spacing:3px;font-size:11.5px;color:var(--accent);text-transform:uppercase;font-weight:600}
+  h1{font-size:clamp(28px,4.4vw,42px);line-height:1.12;margin:12px 0 10px;font-weight:750;letter-spacing:-.5px}
+  .hero .lead{font-size:17px;color:var(--soft);max-width:660px;margin:0}
+  .meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .meta{font-size:12.5px;color:var(--soft);background:var(--card);border:1px solid var(--line);
+        padding:7px 12px;border-radius:8px}
+  .meta b{color:var(--ink);font-weight:650}
+
+  section{padding:40px 0;border-bottom:1px solid var(--line-2)}
+  h2{font-size:21px;margin:0 0 6px;font-weight:700;letter-spacing:-.2px}
+  .section-sub{color:var(--soft);font-size:14px;margin:0 0 22px}
+
+  /* how-to / rubric */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px}
+  .panel h3{margin:0 0 12px;font-size:15px;font-weight:700}
+  .rubric{list-style:none;margin:0;padding:0}
+  .rubric li{display:flex;gap:11px;padding:7px 0;border-top:1px solid var(--line-2);font-size:13.5px}
+  .rubric li:first-child{border-top:0}
+  .score{flex:0 0 auto;width:22px;height:22px;border-radius:6px;display:grid;place-items:center;
+         font-size:12px;font-weight:700;color:#fff;background:var(--ink)}
+  .score.s0{background:#aab2bf}.score.s1{background:#c98a16}.score.s2{background:#5b9bd5}
+  .score.s3{background:#2f9e6f}.score.s4{background:var(--accent)}
+  .principles{margin:0;padding-left:18px;font-size:13.5px;color:var(--soft)}
+  .principles li{margin:7px 0}
+  .principles b{color:var(--ink)}
+
+  /* question cards */
+  .qcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+         padding:22px 24px;margin:16px 0;scroll-margin-top:80px}
+  .qhead{display:flex;align-items:baseline;gap:13px;flex-wrap:wrap}
+  .qnum{font-family:var(--mono);font-size:13px;color:var(--faint);font-weight:600;flex:0 0 auto}
+  .qhead h3{margin:0;font-size:18px;font-weight:700;letter-spacing:-.2px}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+  .tag{font-size:11.5px;color:var(--soft);background:var(--paper);border:1px solid var(--line);
+       padding:3px 9px;border-radius:999px;white-space:nowrap}
+  .tag.time{font-family:var(--mono);font-size:11px}
+  .tag.tier-F{background:var(--f-soft);color:var(--f);border-color:transparent;font-weight:600}
+  .tag.tier-M{background:var(--m-soft);color:var(--m);border-color:transparent;font-weight:600}
+  .tag.tier-A{background:var(--a-soft);color:var(--a);border-color:transparent;font-weight:600}
+
+  .label{font-size:11px;letter-spacing:1.3px;text-transform:uppercase;color:var(--faint);
+         font-weight:700;margin:0 0 6px}
+  .prompt{margin-top:16px}
+  .prompt p{margin:0 0 10px}
+
+  pre{background:var(--code-bg);border:1px solid var(--line-2);border-radius:9px;padding:14px 16px;
+      overflow:auto;margin:8px 0}
+  code{font-family:var(--mono);font-size:13px;color:var(--code-ink)}
+  p code,li code{background:var(--code-bg);padding:1px 5px;border-radius:5px;font-size:12.5px}
+  pre code{background:none;padding:0}
+
+  .guide{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}
+  .block{margin:16px 0}
+  .block:first-child{margin-top:0}
+  .block ul{margin:6px 0;padding-left:20px}
+  .block li{margin:5px 0;font-size:14.5px}
+  .block>p{margin:6px 0;font-size:14.5px}
+
+  .bands{background:var(--paper);border:1px solid var(--line-2);border-radius:9px;padding:14px 16px}
+  .band{display:flex;gap:10px;padding:6px 0;font-size:13.5px;align-items:flex-start}
+  .band .s{flex:0 0 auto;width:20px;height:20px;border-radius:6px;display:grid;place-items:center;
+           font-size:11px;font-weight:700;color:#fff;margin-top:1px}
+  .band .s2{background:#5b9bd5}.band .s3{background:#2f9e6f}.band .s4{background:var(--accent)}
+  .reward{background:var(--accent-soft);border-radius:9px;padding:12px 15px;font-size:13.5px}
+  .reward b{color:var(--accent)}
+
+  /* candidate mode hides guides */
+  body.mode-candidate .guide{display:none}
+  body.mode-candidate .qcard{padding-bottom:22px}
+
+  .hidden{display:none !important}
+
+  /* coverage table */
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line-2)}
+  th{font-size:12px;letter-spacing:.4px;text-transform:uppercase;color:var(--faint);font-weight:700}
+  td .qref{font-family:var(--mono);font-size:12.5px;color:var(--accent)}
+  .sets{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+  .setcard{border:1px solid var(--line);border-radius:10px;padding:15px 17px;background:var(--card)}
+  .setcard h4{margin:0 0 8px;font-size:14px}
+  .setcard p{margin:0;font-family:var(--mono);font-size:12.5px;color:var(--soft)}
+
+  footer{padding:34px 0 60px;color:var(--faint);font-size:12.5px;text-align:center}
+
+  @media (max-width:720px){
+    .grid2,.sets{grid-template-columns:1fr}
+    .tags{margin-left:0;width:100%}
+    .controls{width:100%}
+  }
+  @media print{
+    .topbar{display:none}
+    body.mode-candidate .guide{display:block} /* always print full guide */
+    .qcard,.panel,.setcard{break-inside:avoid;border-color:#ccc}
+    body{font-size:11pt}
+    a{color:inherit;text-decoration:none}
+  }
+</style>
+</head>
+<body class="mode-interviewer">
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><span class="py">Python OOP</span> · Screening Bank</div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="View">
+        <button id="view-int" class="on" onclick="setView('interviewer')">Interviewer guide</button>
+        <button id="view-cand" onclick="setView('candidate')">Candidate sheet</button>
+      </div>
+      <div class="chipbar" id="filters">
+        <button class="chip on" data-tier="all" onclick="filter('all',this)">All&nbsp;20</button>
+        <button class="chip" data-tier="F" onclick="filter('F',this)">Foundational</button>
+        <button class="chip" data-tier="M" onclick="filter('M',this)">Intermediate</button>
+        <button class="chip" data-tier="A" onclick="filter('A',this)">Advanced</button>
+      </div>
+      <button class="btn-print" onclick="window.print()">Print / PDF</button>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Technical Screening · Object-Oriented Python</div>
+    <h1>OOP Question Bank &amp; Interviewer Guide</h1>
+    <p class="lead">Twenty calibrated questions for screening <b>mid-to-senior full-stack data scientists</b>,
+       each with a reference solution, the skills it probes, scoring anchors, and follow-ups — built to
+       train interviewers and standardize how we grade candidates.</p>
+    <div class="meta-row">
+      <span class="meta"><b>20</b> questions</span>
+      <span class="meta"><b>1-hour</b> session = 3–4 questions</span>
+      <span class="meta">≤<b>15 min</b> each</span>
+      <span class="meta"><b>0–4</b> scoring rubric</span>
+      <span class="meta">Tiers: <b>F / M / A</b></span>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HOW TO USE ===================== -->
+<section id="how">
+  <div class="wrap">
+    <h2>How to run a session</h2>
+    <p class="section-sub">Pick 3–4 questions spanning tiers (≥1 Foundational warm-up, ≥1 Advanced).
+       Let the candidate think aloud; score each on the 0–4 rubric, capturing <em>signal</em>, not just correctness.</p>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Scoring rubric (per question)</h3>
+        <ul class="rubric">
+          <li><span class="score s0">0</span><div><b>No signal.</b> Can't start; fundamental misconceptions.</div></li>
+          <li><span class="score s1">1</span><div><b>Emerging.</b> Partial recall, heavy hints, code doesn't run.</div></li>
+          <li><span class="score s2">2</span><div><b>Competent.</b> Correct core with minor gaps; runs after small fixes.</div></li>
+          <li><span class="score s3">3</span><div><b>Strong.</b> Correct, idiomatic, explains <em>why</em>, handles edge cases.</div></li>
+          <li><span class="score s4">4</span><div><b>Exceptional.</b> Adds trade-offs, alternatives, a performance/maintenance lens.</div></li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Calibration principles (read before grading)</h3>
+        <ul class="principles">
+          <li><b>Reward the library instinct.</b> A senior who says “I'd use NumPy/pandas/sklearn/<code>dataclasses</code> here” and explains <em>when</em> hand-rolling is justified should score <b>higher</b>, not be dinged for “not implementing it.”</li>
+          <li><b>Credit the mental model, not the term.</b> For recitation-prone topics (MRO, <code>NotImplemented</code>, descriptors) grade the reasoning, not the vocabulary.</li>
+          <li><b>Senior bar:</b> clears Advanced questions with little prompting <em>and</em> volunteers trade-offs.</li>
+          <li><b>Fairness:</b> descriptors (Q15) and low-level mechanics may under-credit strong applied DS who never needed them — use as <em>discriminators</em>, not gates.</li>
+          <li><b>Time:</b> budgets are split as <code>code ~X / discuss ~Y</code>. If a candidate stalls on syntax, move to discussion — we're screening design judgment.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== QUESTIONS ===================== -->
+<section id="questions">
+  <div class="wrap">
+    <h2>Question bank</h2>
+    <p class="section-sub">Toggle <b>Candidate sheet</b> (top-right) to hide all solutions and print a clean question sheet.
+       Filter by tier with the chips.</p>
+
+    <!-- Q1 -->
+    <article class="qcard" data-tier="F">
+      <header class="qhead">
+        <span class="qnum">Q01</span><h3>The shared mutable class attribute</h3>
+        <div class="tags"><span class="tag tier-F">Foundational</span><span class="tag">State &amp; attributes</span><span class="tag time">≤8 min · code ~3 / discuss ~5</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>A teammate reports that two <code>Dataset</code> objects share data: adding a sample to one shows up in the other. Explain the bug, fix it, and explain class vs. instance attributes.</p>
+<pre><code>class Dataset:
+    samples = []
+    def __init__(self, name):
+        self.name = name
+    def add(self, x):
+        self.samples.append(x)</code></pre>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class Dataset:
+    def __init__(self, name):
+        self.name = name
+        self.samples = []          # per-instance state
+    def add(self, x):
+        self.samples.append(x)</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Attribute lookup order, mutation vs. rebinding — the single most common Python OOP bug, and the root cause of subtle data-leakage bugs in stateful estimators.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><code>samples</code> lives on the <em>class</em>, so all instances share one list object.</li>
+            <li><code>self.samples.append(x)</code> <em>reads</em> <code>samples</code> (found on the class, since no instance attribute shadows it) and <em>mutates it in place</em> — it never rebinds, so every instance sees the change.</li>
+            <li>Assigning <code>self.samples = []</code> in <code>__init__</code> creates a distinct instance attribute that shadows the class one.</li>
+            <li>Class attributes are right for <em>constants/shared config</em> (<code>DEFAULT_BATCH = 32</code>); mutable class attributes are a footgun.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Moves <code>samples</code> into <code>__init__</code> but can't explain why.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Explains lookup order + mutate-vs-rebind clearly.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Connects it to the mutable-default-argument trap and to real DS bugs (a model class accumulating <code>self.losses_</code>/<code>self.history</code> shared across instances).</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> the candidate who immediately asks “is this a shared reference?” — that instinct prevents train/test-leakage-class bugs.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Show <code>def add(self, x, bucket=[])</code> — same bug class (mutable default argument). Why does it persist across calls?</p></div>
+      </div>
+    </article>
+
+    <!-- Q2 -->
+    <article class="qcard" data-tier="F">
+      <header class="qhead">
+        <span class="qnum">Q02</span><h3><code>__repr__</code> vs <code>__str__</code> on a model object</h3>
+        <div class="tags"><span class="tag tier-F">Foundational</span><span class="tag">Data model</span><span class="tag time">≤8 min · code ~3 / discuss ~5</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Why does a list of model objects print as <code>[&lt;Model object at 0x7f…&gt;, …]</code> in a notebook? Implement <code>__repr__</code> and <code>__str__</code> for a (possibly fitted) <code>LinearModel</code>. What happens if you define only one?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class LinearModel:
+    def __init__(self, n_features, lr=0.01):
+        self.n_features = n_features
+        self.lr = lr
+        self.coef_ = None                       # set after fit
+
+    def __repr__(self):                         # dev-facing, unambiguous
+        return (f"LinearModel(n_features={self.n_features}, "
+                f"lr={self.lr!r}, fitted={self.coef_ is not None})")
+
+    def __str__(self):                          # human summary
+        state = "fitted" if self.coef_ is not None else "unfitted"
+        return f"Linear model on {self.n_features} features ({state})"</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>The two string protocols and developer ergonomics — a good <code>__repr__</code> is the highest-leverage debugging aid in data work (notebooks, logs, tracebacks).</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><code>__repr__</code>: unambiguous, developer-facing, ideally round-trips. Used in the REPL, <em>inside containers</em> (a list prints each element's <code>repr</code>), and in logs/tracebacks — that's why notebooks show object addresses without it.</li>
+            <li><code>__str__</code>: human-readable; used by <code>print()</code>, <code>str()</code>, and f-string <code>{x}</code>.</li>
+            <li>Define only <code>__repr__</code> → <code>__str__</code> falls back to it. <em>Not</em> the reverse — so always define <code>__repr__</code> first.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Writes both but conflates their audiences.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Knows containers use <code>repr</code>, knows the fallback direction, uses <code>!r</code>.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Frames <code>__repr__</code> as a debugging investment; notes “eval-able” is the ideal but “useful description” is the real rule.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> surfacing fitted-state in <code>__repr__</code> (like sklearn) — shows they've debugged real pipelines.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Should <code>repr</code> always be <code>eval</code>-able? (No — for many objects “a useful, unambiguous description” is the goal.)</p></div>
+      </div>
+    </article>
+
+    <!-- Q3 -->
+    <article class="qcard" data-tier="F">
+      <header class="qhead">
+        <span class="qnum">Q03</span><h3><code>@classmethod</code> vs <code>@staticmethod</code> &amp; alternative constructors</h3>
+        <div class="tags"><span class="tag tier-F">Foundational+</span><span class="tag">Methods</span><span class="tag time">≤12 min · code ~6 / discuss ~6</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Explain instance vs <code>@classmethod</code> vs <code>@staticmethod</code>. Add an alternative constructor <code>from_csv</code> and a validation helper to a <code>TimeSeries</code>. Why return <code>cls(...)</code> instead of <code>TimeSeries(...)</code>?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class TimeSeries:
+    def __init__(self, timestamps, values):
+        self.timestamps = timestamps          # numeric epoch seconds
+        self.values = values
+
+    @classmethod
+    def from_csv(cls, path):
+        ts, vals = [], []
+        with open(path) as f:
+            for line in f:
+                t, v = line.strip().split(",")
+                ts.append(float(t)); vals.append(float(v))   # parse to numbers
+        return cls(ts, vals)                  # respects subclasses
+
+    @staticmethod
+    def is_regular(timestamps, tol=1e-9):
+        if len(timestamps) &lt; 2:
+            return True                       # vacuously regular
+        deltas = [b - a for a, b in zip(timestamps, timestamps[1:])]
+        return max(deltas) - min(deltas) &lt;= tol</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>The factory pattern, the role of <code>cls</code>, inheritance-awareness, and numeric-edge-case discipline.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><b>Instance method</b> takes <code>self</code>; <b>classmethod</b> takes <code>cls</code> (ideal for alternative constructors); <b>staticmethod</b> takes no implicit arg (a cohesive utility namespaced on the class).</li>
+            <li>Returning <code>cls(...)</code> means a subclass <code>Daily(TimeSeries)</code> gets <code>Daily.from_csv()</code> returning a <code>Daily</code> — not a <code>TimeSeries</code>.</li>
+            <li><b>Correctness:</b> timestamps must be parsed to numbers, or <code>is_regular</code>'s <code>b - a</code> raises <code>TypeError</code>. Guard length ≤ 1, and compare spacing with a <code>tol</code> because float gaps rarely match exactly.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Knows the three method types; reaches for <code>@classmethod</code> for <code>from_csv</code>.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Explains the <code>cls</code> subclass-correctness benefit; parses inputs correctly.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Raises the float-equality issue unprompted; notes real code would wrap <code>pd.read_csv</code> rather than hand-parse.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> “in production this is <code>pd.read_csv</code>; the lesson is <code>cls</code> for subclass-safe factories.” Don't penalize skipping the hand-parse.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Could <code>is_regular</code> be a module function instead? (Yes — staticmethod is mostly about cohesion/discoverability.)</p></div>
+      </div>
+    </article>
+
+    <!-- Q4 -->
+    <article class="qcard" data-tier="F">
+      <header class="qhead">
+        <span class="qnum">Q04</span><h3><code>@property</code> &amp; <code>cached_property</code> for derived features</h3>
+        <div class="tags"><span class="tag tier-F">Foundational+</span><span class="tag">Encapsulation</span><span class="tag time">≤12 min · code ~6 / discuss ~6</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Make <code>fahrenheit</code> a read-only computed property of <code>celsius</code>, and validate <code>celsius</code> ≥ absolute zero. Then: an expensive derived feature is recomputed on every access — fix it. When is a property worth it, and what does it cost?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>from functools import cached_property
+
+class Reading:
+    def __init__(self, celsius, signal):
+        self.celsius = celsius            # routes through the setter
+        self.signal = signal
+
+    @property
+    def celsius(self):
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        if value &lt; -273.15:
+            raise ValueError("below absolute zero")
+        self._celsius = value
+
+    @property
+    def fahrenheit(self):                 # cheap, always fresh
+        return self._celsius * 9 / 5 + 32
+
+    @cached_property
+    def spectral_features(self):          # expensive, computed once
+        return expensive_fft(self.signal)</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Encapsulation without breaking the API, computed attributes, and the lazy-vs-fresh trade-off behind <code>cached_property</code>.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>A property gives <em>attribute syntax</em> backed by <em>method behavior</em> (validation, derivation). You can convert a plain attribute into a property <em>without changing callers</em> — so start public, add logic only when needed (“uniform access”).</li>
+            <li><code>__init__</code> assigning <code>self.celsius</code> reuses the setter's validation — no duplication.</li>
+            <li><code>cached_property</code> computes once and stores the result in the instance <code>__dict__</code>; great for expensive derived features. <b>Caveat:</b> the cache won't refresh if inputs change, and it needs a writable <code>__dict__</code> (clashes with <code>__slots__</code>).</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Writes the property + setter validation.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Reuses the setter in <code>__init__</code>; reaches for <code>cached_property</code> for the expensive case.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Names the staleness caveat and the <code>__slots__</code> interaction; avoids premature getters/setters (“don't write Java in Python”).</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> recognizing that caching derived features introduces a staleness/invalidation problem.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Add a <code>fahrenheit</code> setter that updates <code>celsius</code>. How would you invalidate <code>spectral_features</code> when <code>signal</code> changes?</p></div>
+      </div>
+    </article>
+
+    <!-- Q5 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q05</span><h3><code>__eq__</code> / <code>__hash__</code> for a cache / feature key</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Data model</span><span class="tag time">≤12 min · code ~5 / discuss ~7</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>You key a feature cache by <code>(model_name, version, feature_hash)</code>. Implement a <code>CacheKey</code> value object usable as a <code>dict</code> key / <code>set</code> member. What happens to hashability once you define <code>__eq__</code>? State the contract — and what breaks if a key's fields mutate after insertion?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class CacheKey:
+    def __init__(self, model_name, version, feature_hash):
+        self.model_name = model_name
+        self.version = version
+        self.feature_hash = feature_hash
+
+    def __eq__(self, other):
+        if not isinstance(other, CacheKey):
+            return NotImplemented
+        return ((self.model_name, self.version, self.feature_hash)
+                == (other.model_name, other.version, other.feature_hash))
+
+    def __hash__(self):
+        return hash((self.model_name, self.version, self.feature_hash))
+
+# Idiomatic shortcut: @dataclass(frozen=True) generates all of this.</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>The hash/eq invariant, value semantics, how <code>set</code>/<code>dict</code> actually work, and <code>NotImplemented</code>.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>Defining <code>__eq__</code> sets <code>__hash__ = None</code> → the class becomes <em>unhashable</em> (Python's safety default, since custom equality usually invalidates the identity hash). You must define <code>__hash__</code> too.</li>
+            <li><b>Contract:</b> <code>a == b ⟹ hash(a) == hash(b)</code> (the converse need not hold — collisions are fine). Hash from the same immutable fields used in <code>__eq__</code>.</li>
+            <li><b>Mutation trap:</b> change a field after inserting into a set/dict and the object lands in the wrong hash bucket — lookups silently miss. Keys must be effectively immutable.</li>
+            <li>Return <code>NotImplemented</code> (not <code>False</code>) for foreign types so Python can try the reflected comparison.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Implements both, hashes a tuple of fields.</div></div>
+          <div class="band"><span class="s s3">3</span><div>States the contract and the “define eq → unhashable” rule.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Explains the mutate-after-insert failure, returns <code>NotImplemented</code>, and reaches for <code>@dataclass(frozen=True)</code> as the real-world shortcut (also sets <code>__hash__</code>).</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> “I'd make this a frozen dataclass” — the idiomatic, less error-prone answer.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Why does <code>@dataclass(eq=True, frozen=False)</code> also make instances unhashable?</p></div>
+      </div>
+    </article>
+
+    <!-- Q6 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q06</span><h3>Dataclasses: <code>frozen</code>, <code>field</code>, and the hashability rule</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Modern Python</span><span class="tag time">≤12 min · code ~6 / discuss ~6</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Rewrite a boilerplate class as a <code>@dataclass</code> for an immutable experiment config: make it frozen, give a field a mutable default safely, and exclude a timestamp from equality. <em>Precisely</em>: which defaults does <code>@dataclass</code> reject, and why is that not a complete safety net?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>from dataclasses import dataclass, field
+
+@dataclass(frozen=True)
+class ExperimentConfig:
+    name: str
+    params: dict = field(default_factory=dict)          # safe per-instance
+    created_at: float = field(default=0.0, compare=False)</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Modern stdlib fluency, immutability/hashability, and a precise understanding of the mutable-default guard (a deeper version of Q1).</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><code>@dataclass</code> generates <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code> from annotated fields.</li>
+            <li><b>The precise rule:</b> dataclasses reject a default whose <em>type is unhashable</em> (<code>type(default).__hash__ is None</code>) — so <code>list</code>/<code>dict</code>/<code>set</code> raise <code>ValueError</code> at class definition. It is a <em>hashability heuristic</em>, not a true mutability check: a mutable-but-hashable default (e.g., a normal custom object) is <em>silently shared</em> across instances. So <code>default_factory</code> is the real fix, not just a way to satisfy the linter.</li>
+            <li><code>frozen=True</code> blocks attribute writes (<code>FrozenInstanceError</code>) and generates a <code>__hash__</code> — so instances are hashable <em>iff every compared field is itself hashable</em>. A <code>dict</code> field like <code>params</code> still raises at <code>hash()</code> time (a common gotcha — use a hashable type or <code>compare=False</code> if you need it as a key). Immutability also prevents the “mutate a shared config → corrupt another experiment / leak across runs” bug.</li>
+            <li><code>compare=False</code> excludes <code>created_at</code>, so two runs with identical config compare equal regardless of when they ran.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Uses <code>frozen</code> + <code>default_factory</code> + <code>compare=False</code> correctly.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Explains why bare <code>= {}</code> is the Q1 bug and that the dataclass raises on it.</div></div>
+          <div class="band"><span class="s s4">4</span><div>States the unhashable-type heuristic precisely and that it's <em>not</em> a complete safety net; mentions <code>slots=True</code>, <code>kw_only</code>, <code>__post_init__</code> for validation.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> connecting frozen config to reproducibility / leakage safety, not just boilerplate reduction.</div>
+        <div class="block"><p class="label">Follow-up</p><p>How would you validate <code>name</code> is non-empty in a frozen dataclass? (<code>__post_init__</code> with <code>object.__setattr__</code> for any normalization.)</p></div>
+      </div>
+    </article>
+
+    <!-- Q7 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q07</span><h3>Abstract base classes vs <code>Protocol</code></h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Interfaces &amp; typing</span><span class="tag time">≤13 min · code ~6 / discuss ~7</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Define an <code>Estimator</code> interface (<code>fit</code>, <code>predict</code>) with <code>abc</code>; show that a subclass missing <code>predict</code> can't be instantiated. When prefer an ABC over duck typing, and how does <code>typing.Protocol</code> differ?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>from abc import ABC, abstractmethod
+
+class Estimator(ABC):
+    @abstractmethod
+    def fit(self, X, y): ...
+    @abstractmethod
+    def predict(self, X): ...
+
+class MeanRegressor(Estimator):
+    def fit(self, X, y):
+        self.mu_ = sum(y) / len(y); return self
+    def predict(self, X):
+        return [self.mu_] * len(X)
+# A subclass without predict -> TypeError at instantiation.
+
+# Structural alternative:
+from typing import Protocol, runtime_checkable
+@runtime_checkable
+class SupportsPredict(Protocol):
+    def predict(self, X): ...</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Interface design, fail-fast contracts, and nominal (ABC) vs structural (Protocol) typing.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>An ABC <em>can't be instantiated</em>; a concrete subclass leaving any <code>@abstractmethod</code> unimplemented also can't (<code>TypeError</code> at construction) — fails fast and loud.</li>
+            <li><b>ABC</b> when you own the hierarchy, want shared/base logic, and want explicit <code>isinstance</code> contracts.</li>
+            <li><b>Protocol</b> for structural typing (“if it has <code>predict</code>, it qualifies”) — perfect for typing third-party/duck-typed objects you don't control, no inheritance needed; checked statically (and at runtime if <code>@runtime_checkable</code>).</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Writes the ABC, knows abstract methods block instantiation.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Articulates fail-fast value and gives a real use (sklearn-style estimators).</div></div>
+          <div class="band"><span class="s s4">4</span><div>Frames nominal vs structural, picks Protocol for “accept anything with <code>.predict</code>,” notes <code>np.mean</code> would replace the toy <code>sum/len</code> in practice.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> choosing Protocol to type a function that accepts <em>any</em> model with <code>.predict</code> — decoupling without inheritance.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Can an ABC method have a default implementation a subclass may override? (Yes.) When does that beat a Protocol?</p></div>
+      </div>
+    </article>
+
+    <!-- Q8 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q08</span><h3>Operator overloading: a mergeable aggregate (<code>__add__</code>/<code>__radd__</code>)</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Data model</span><span class="tag time">≤14 min · code ~7 / discuss ~7</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Implement <code>RunningStats</code> — a partial aggregate (count, sum, sum-of-squares) you can <em>merge</em> with <code>+</code> across shards/batches, exposing <code>mean</code> and <code>variance</code>. Make <code>sum([s1, s2, s3])</code> work. Use <code>NotImplemented</code> correctly.</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class RunningStats:
+    """Mergeable partial aggregate — the combiner pattern in MapReduce."""
+    def __init__(self, n=0, total=0.0, sq=0.0):
+        self.n, self.total, self.sq = n, total, sq
+
+    @classmethod
+    def from_values(cls, xs):
+        return cls(len(xs), sum(xs), sum(x * x for x in xs))
+
+    @property
+    def mean(self):
+        return self.total / self.n if self.n else float("nan")
+
+    @property
+    def variance(self):
+        return self.sq / self.n - self.mean ** 2 if self.n else float("nan")
+
+    def __add__(self, other):
+        if not isinstance(other, RunningStats):
+            return NotImplemented                 # let Python try other side
+        return RunningStats(self.n + other.n,
+                            self.total + other.total, self.sq + other.sq)
+
+    def __radd__(self, other):
+        if other == 0:                            # sum() starts from int 0
+            return self
+        return NotImplemented
+
+    def __repr__(self):
+        return f"RunningStats(n={self.n}, mean={self.mean:.3f})"</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Reflected operators, the <code>NotImplemented</code> singleton, and modeling a real distributed-aggregation primitive (not hand-rolled array math).</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><code>sum(parts)</code> computes <code>0 + s1 + …</code>; <code>0 + s1</code> calls <code>int.__add__</code> first → returns <code>NotImplemented</code> → Python falls back to <code>s1.__radd__(0)</code>. Hence <code>__radd__</code>.</li>
+            <li>Returning the singleton <code>NotImplemented</code> (not raising, not <code>False</code>) tells Python to try the reflected operator; raising <code>TypeError</code> would short-circuit that.</li>
+            <li>Operator overloading is justified <em>here</em> because <code>+</code> has clear domain meaning (merge aggregates) — this is the combiner that lets you parallelize a mean/variance over partitions. (For elementwise array math you'd use NumPy, not a custom class.)</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Implements <code>__add__</code>; forgets <code>__radd__</code> so <code>sum()</code> raises.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Adds <code>__radd__</code>, explains the reflected-operator fallback and <code>NotImplemented</code> vs <code>NotImplementedError</code>.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Notes this is the map-reduce combiner pattern; mentions numerical stability (Welford / Kahan) for streaming variance.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> recognizing the combiner pattern (mergeable, associative) and that elementwise vector math belongs in NumPy.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Difference between <code>NotImplemented</code> and <code>NotImplementedError</code>? Why is naive sum-of-squares variance numerically risky?</p></div>
+      </div>
+    </article>
+
+    <!-- Q9 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q09</span><h3>Context managers two ways</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Resource mgmt</span><span class="tag time">≤12 min · code ~6 / discuss ~6</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Write a <code>Timer</code> context manager two ways — a class (<code>__enter__</code>/<code>__exit__</code>) and <code>contextlib.contextmanager</code> — that both expose <code>.elapsed</code>. How does <code>__exit__</code> see exceptions, and when does returning <code>True</code> matter?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>import time
+from contextlib import contextmanager
+from types import SimpleNamespace
+
+class Timer:
+    def __enter__(self):
+        self.start = time.perf_counter()
+        return self                       # bound to `as t`
+    def __exit__(self, exc_type, exc, tb):
+        self.elapsed = time.perf_counter() - self.start
+        return False                      # do NOT suppress exceptions
+
+@contextmanager
+def timer():
+    h = SimpleNamespace(elapsed=None)
+    start = time.perf_counter()
+    try:
+        yield h                           # `as h`; h.elapsed filled on exit
+    finally:
+        h.elapsed = time.perf_counter() - start</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>The context-manager protocol, deterministic cleanup, exception flow, and <code>contextlib</code>.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><code>__enter__</code>'s return value binds to the <code>as</code> target. <code>__exit__</code> always runs — normal exit or exception.</li>
+            <li>On exception, <code>__exit__</code> receives <code>(exc_type, exc, tb)</code>; returning a <em>truthy</em> value <em>suppresses</em> it. Returning <code>False</code>/<code>None</code> lets it propagate (the safe default — accidental swallowing hides bugs).</li>
+            <li>In the generator form, <code>try/finally</code> around <code>yield</code> guarantees cleanup; code before <code>yield</code> is setup, after is teardown.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>One correct implementation.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Both forms; knows the <code>as</code>-binding and that <code>__exit__</code> always runs.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Explains exception suppression precisely, warns against accidental swallowing, cites real uses (DB sessions, temp files, <code>torch.no_grad()</code>-style scopes), mentions <code>ExitStack</code>.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> unprompted caution about returning truthy from <code>__exit__</code> and hiding exceptions.</div>
+        <div class="block"><p class="label">Follow-up</p><p>How would you manage many resources opened in a loop? (<code>contextlib.ExitStack</code>.)</p></div>
+      </div>
+    </article>
+
+    <!-- Q10 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q10</span><h3>Iterables vs iterators (re-iterability)</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Iteration</span><span class="tag time">≤13 min · code ~6 / discuss ~7</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Build a <code>BatchLoader</code> that yields fixed-size batches and can be iterated <em>multiple times</em>. What's the difference between an <em>iterable</em> and an <em>iterator</em>? Why can a class whose <code>__iter__</code> returns <code>self</code> be looped only once?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class BatchLoader:
+    def __init__(self, data, batch_size):
+        self.data = data
+        self.batch_size = batch_size
+    def __iter__(self):                          # generator -&gt; fresh each call
+        for i in range(0, len(self.data), self.batch_size):
+            yield self.data[i:i + self.batch_size]</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>The iteration protocol, generators, and statefulness — directly relevant to data pipelines / <code>DataLoader</code>s.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><b>Iterable:</b> implements <code>__iter__</code>, returning a fresh <em>iterator</em>. <b>Iterator:</b> implements <code>__next__</code> (and <code>__iter__</code> returning <code>self</code>); it's stateful and single-use (raises <code>StopIteration</code> when done).</li>
+            <li>Writing <code>__iter__</code> as a <em>generator</em> yields a brand-new iterator on every <code>for</code> loop → re-iterable.</li>
+            <li>If the object <em>is</em> its own iterator (<code>__iter__</code> returns <code>self</code> with a cursor in <code>__next__</code>), the cursor is shared/exhausted, so a second loop yields nothing.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Produces batches but can't articulate iterable vs iterator.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Explains the distinction and why the generator form is re-iterable.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Connects to lazy/streaming memory efficiency (data that doesn't fit in RAM) and the single-pass gotcha that bites <code>DataLoader</code>/generator users.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> mentioning generators give lazy, O(1)-memory streaming for large datasets.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Write the explicit <code>__iter__</code>/<code>__next__</code> version and show it exhausts after one pass.</p></div>
+      </div>
+    </article>
+
+    <!-- Q11 -->
+    <article class="qcard" data-tier="A">
+      <header class="qhead">
+        <span class="qnum">Q11</span><h3><code>super()</code>, MRO &amp; cooperative mixins</h3>
+        <div class="tags"><span class="tag tier-A">Advanced</span><span class="tag">Inheritance &amp; MRO</span><span class="tag time">≤14 min · code ~4 / discuss ~10</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p><b>(a)</b> Why must each mixin call <code>super().setup()</code>? <b>(b)</b> Predict the output and <code>Model.__mro__</code>. <b>(c)</b> What changes if <code>Logged.setup</code> omits its <code>super()</code> call?</p>
+<pre><code>class Base:
+    def setup(self): print("Base")
+class Logged(Base):
+    def setup(self): print("Logged"); super().setup()
+class Cached(Base):
+    def setup(self): print("Cached"); super().setup()
+class Model(Logged, Cached):
+    def setup(self): print("Model"); super().setup()
+
+Model().setup()</code></pre>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>Model
+Logged
+Cached
+Base
+# Model.__mro__ == [Model, Logged, Cached, Base, object]</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>C3 linearization, cooperative <code>super()</code>, and the real mental model of method dispatch in mixin-heavy frameworks (Keras layers, DRF views, dataset base classes).</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><b>(a)</b> <code>super()</code> dispatches to the <em>next class in the instance's MRO</em>, not the literal parent. Each mixin must call <code>super()</code> or the chain stops and later mixins/base are skipped.</li>
+            <li><b>(b)</b> MRO is computed by <em>C3 linearization</em>: local precedence (<code>Logged</code> before <code>Cached</code> because <code>Model(Logged, Cached)</code>) + monotonicity. Inside <code>Logged</code>, <code>super().setup()</code> goes to <code>Cached</code> — <em>not</em> <code>Base</code>. <code>Base</code> runs once because each class appears once in the MRO.</li>
+            <li><b>(c)</b> If <code>Logged</code> drops its <code>super()</code> call, <code>Cached</code> and <code>Base</code> are skipped — the classic broken-cooperative-inheritance bug.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Gets the output but thinks <code>super</code> == parent.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Correct output + states “<code>super</code> follows the instance's MRO,” explains the single <code>Base</code> call.</div></div>
+          <div class="band"><span class="s s4">4</span><div>States the C3 rules, predicts the (c) breakage, and ties it to real framework mixins they've used.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> the mental model “super walks the MRO,” not memorizing the term “C3.”</div>
+        <div class="block"><p class="label">Follow-up</p><p>What if a mixin's <code>setup</code> took different arguments than another's? (Cooperative methods must share a compatible signature — often <code>*args, **kwargs</code>.)</p></div>
+      </div>
+    </article>
+
+    <!-- Q12 -->
+    <article class="qcard" data-tier="A">
+      <header class="qhead">
+        <span class="qnum">Q12</span><h3><code>__slots__</code> and memory at scale</h3>
+        <div class="tags"><span class="tag tier-A">Advanced</span><span class="tag">Performance</span><span class="tag time">≤12 min · code ~4 / discuss ~8</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>You instantiate tens of millions of small objects and hit memory limits. Explain <code>__slots__</code>, rewrite a class to use it, and list the trade-offs. Then: is this even the right tool?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class Particle:
+    __slots__ = ("x", "y", "mass")
+    def __init__(self, x, y, mass):
+        self.x, self.y, self.mass = x, y, mass</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>CPython's object model, memory/perf awareness at data scale, and knowing the costs — and the better alternative.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>By default each instance carries a <code>__dict__</code> for dynamic attributes — flexible but heavy. <code>__slots__</code> stores attributes in a fixed, array-like layout: <em>less memory per instance</em> and <em>often</em> slightly faster attribute access.</li>
+            <li><b>Trade-offs:</b> (1) no new attributes beyond the declared slots; (2) no <code>__dict__</code>/<code>__weakref__</code> unless added; (3) inheritance caveats — subclasses regain a <code>__dict__</code> unless they also declare <code>__slots__</code>, and two slotted bases with non-empty slots raise a layout conflict; (4) clashes with <code>cached_property</code>/class-level defaults for slotted names.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Knows <code>__slots__</code> saves memory; can write it.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Lists the main trade-offs (no dynamic attrs, inheritance caveats).</div></div>
+          <div class="band"><span class="s s4">4</span><div>Says “profile first,” quantifies the win, and — crucially — notes the <em>real</em> fix for millions of records is columnar/NumPy/pandas/<code>array</code>, not millions of Python objects.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> reaching for vectorized/columnar storage instead of micro-optimizing per-object overhead. That's the senior DS answer.</div>
+        <div class="block"><p class="label">Follow-up</p><p>When is <code>__slots__</code> the wrong tool? (When you should be using NumPy/pandas/Arrow.) How does <code>@dataclass(slots=True)</code> help?</p></div>
+      </div>
+    </article>
+
+    <!-- Q13 -->
+    <article class="qcard" data-tier="A">
+      <header class="qhead">
+        <span class="qnum">Q13</span><h3>Composition over inheritance</h3>
+        <div class="tags"><span class="tag tier-A">Advanced</span><span class="tag">Design</span><span class="tag time">≤15 min · code ~5 / discuss ~10</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>A <code>DataPipeline</code> needs optional, combinable behaviors: logging, caching, validation. Sketch why a class-per-combination inheritance design fails, then refactor to composition. When are mixins still appropriate?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution (sketch)</p>
+<pre><code>class Pipeline:
+    def __init__(self, steps, *, logger=None, cache=None, validator=None):
+        self.steps = steps
+        self.logger = logger or NullLogger()       # null-object defaults
+        self.cache = cache or NullCache()
+        self.validator = validator
+
+    def run(self, data):
+        if self.validator:
+            self.validator.check(data)
+        key = self.cache.key(data)
+        if (hit := self.cache.get(key)) is not None:
+            self.logger.info("cache hit"); return hit
+        for step in self.steps:
+            data = step(data)
+        self.cache.set(key, data)
+        self.logger.info("computed")
+        return data</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Design judgment (SOLID), dependency injection, and recognizing combinatorial inheritance explosion. <em>Open question — grade the reasoning.</em></p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>Inheritance for behavior combos explodes: <code>LoggingPipeline</code>, <code>CachingPipeline</code>, <code>LoggingCachingValidatingPipeline</code>, … — N behaviors → 2ᴺ classes.</li>
+            <li><b>Composition</b> injects collaborators (strategy objects): behaviors are independent, swappable, and testable in isolation (pass a fake logger/cache). Null-object defaults keep <code>run()</code> branch-free.</li>
+            <li><b>Mixins</b> remain fine for <em>orthogonal, cross-cutting</em> behavior designed to cooperate via <code>super()</code> (e.g., a <code>SerializableMixin</code>) — avoid deep stacks and shared mutable state.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Prefers composition but reasoning is vague.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Names the 2ᴺ explosion and injects collaborators; mentions testability.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Invokes open/closed + DI, shows swap (Redis vs in-memory cache), and resists over-engineering for the simple case.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> talking about <em>testing each behavior in isolation</em> and swapping implementations behind an interface.</div>
+        <div class="block"><p class="label">Follow-up</p><p>How would you unit-test caching behavior without a real cache? How does this enable swapping a backend?</p></div>
+      </div>
+    </article>
+
+    <!-- Q14 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q14</span><h3>Custom exception hierarchy</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Error handling</span><span class="tag time">≤11 min · code ~5 / discuss ~6</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Design exceptions for a data-validation library: a base plus <code>SchemaError</code> and <code>MissingValueError</code>. Why a common base? Show catching at different granularities and chaining context with <code>raise … from</code>.</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class DataError(Exception):
+    """Base for all data-validation errors."""
+
+class SchemaError(DataError):
+    pass
+
+class MissingValueError(DataError):
+    def __init__(self, column):
+        super().__init__(f"missing values in column {column!r}")
+        self.column = column                       # structured payload
+
+# usage
+try:
+    validate(df)
+except MissingValueError as e:                     # specific
+    fill_defaults(e.column)
+except DataError:                                  # catch-all for this lib
+    abort()
+
+# chaining
+try:
+    int(raw)
+except ValueError as e:
+    raise SchemaError("expected integer id") from e</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Exception design, API ergonomics, and error-context preservation.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>A <em>common base</em> lets callers catch every library error with one <code>except DataError</code> while still handling subclasses finely — and keeps your errors distinct from built-ins.</li>
+            <li>Subclasses can carry <em>structured data</em> (<code>e.column</code>) for programmatic handling, not just a message string.</li>
+            <li><code>raise New(...) from original</code> sets <code>__cause__</code> and preserves the chain in the traceback; <code>from None</code> deliberately suppresses a noisy cause.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Builds the hierarchy; inherits from <code>Exception</code>.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Explains the catch-all base + structured attributes.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Uses <code>from</code>/<code>from None</code> correctly; discusses when to subclass a builtin (e.g., <code>ValueError</code>) instead.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> attaching structured fields for programmatic recovery, not just human messages.</div>
+        <div class="block"><p class="label">Follow-up</p><p>When should <code>MissingValueError</code> inherit from <code>ValueError</code> rather than a custom base?</p></div>
+      </div>
+    </article>
+
+    <!-- Q15 -->
+    <article class="qcard" data-tier="A">
+      <header class="qhead">
+        <span class="qnum">Q15</span><h3>Descriptors for reusable hyperparameter validation</h3>
+        <div class="tags"><span class="tag tier-A">Advanced</span><span class="tag">Data model</span><span class="tag time">≤15 min · code ~7 / discuss ~8</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Many estimators need validated hyperparameters (a probability in [0,1], a positive int). Write reusable descriptors instead of repeating property boilerplate. Explain <code>__set_name__</code>, <code>__get__</code>, <code>__set__</code>, and how <code>@property</code> relates.</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class Probability:
+    def __set_name__(self, owner, name):
+        self._name = f"_{name}"                  # auto-captures attr name
+    def __get__(self, obj, objtype=None):
+        if obj is None:
+            return self                          # class access -&gt; descriptor
+        return getattr(obj, self._name)
+    def __set__(self, obj, value):
+        if not 0.0 &lt;= value &lt;= 1.0:
+            raise ValueError(f"{self._name[1:]} must be in [0,1]")
+        setattr(obj, self._name, value)          # stored on the instance
+
+class Classifier:
+    threshold = Probability()
+    def __init__(self, threshold):
+        self.threshold = threshold              # triggers __set__</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>The descriptor protocol — the machinery <em>behind</em> properties/methods — and building reusable, DRY abstractions. Strong senior signal.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>A <em>descriptor</em> is any object defining <code>__get__</code>/<code>__set__</code>/<code>__delete__</code>; as a <em>class attribute</em> it intercepts instance attribute access.</li>
+            <li><code>__set_name__(owner, name)</code> is called at class creation with the attribute name, so one descriptor knows where to store per-instance data (<code>_threshold</code>) — no manual wiring.</li>
+            <li>State lives on the <em>instance</em> (<code>setattr(obj, self._name, …)</code>), because one descriptor object is shared by all instances of the class — storing on the descriptor would leak state across instances.</li>
+            <li><code>@property</code> is itself a descriptor; descriptors generalize it so one validator serves many attributes and classes — this is how sklearn/pydantic/attrs validate params under the hood.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Writes a working descriptor with hard-coded storage name.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Uses <code>__set_name__</code>, stores on the instance, explains why.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Explains data vs non-data descriptors (defining <code>__set__</code> makes it a <em>data</em> descriptor that takes precedence over the instance <code>__dict__</code>) and that methods are descriptors too.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> connecting descriptors to how pydantic/attrs/sklearn validation actually works.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Why store on the instance rather than on the descriptor? (Shared descriptor → per-instance state must live on the instance.) What's a data vs non-data descriptor?</p></div>
+      </div>
+    </article>
+
+    <!-- Q16 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q16</span><h3>A scikit-learn-style transformer (fit / transform / conventions)</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate+</span><span class="tag">DS-applied</span><span class="tag time">≤14 min · code ~7 / discuss ~7</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Implement a <code>StandardScaler</code>-like transformer with <code>fit</code>, <code>transform</code>, <code>fit_transform</code>. Store learned state, raise if <code>transform</code> runs before <code>fit</code>, and follow sklearn conventions. (Treat <code>X</code> as 1-D for brevity.) Then: why must you <code>fit</code> on train only?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class StandardScaler:
+    def fit(self, X):
+        n = len(X)
+        self.mean_ = sum(X) / n
+        var = sum((x - self.mean_) ** 2 for x in X) / n
+        self.scale_ = var ** 0.5 or 1.0          # guard zero variance
+        return self                               # enable chaining
+    def transform(self, X):
+        if not hasattr(self, "mean_"):
+            raise RuntimeError("call fit() before transform()")
+        return [(x - self.mean_) / self.scale_ for x in X]
+    def fit_transform(self, X):
+        return self.fit(X).transform(X)
+# Real sklearn: per-column on 2-D arrays, np.mean(X, axis=0); raises NotFittedError.</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Applying OOP to the core DS workflow; state management; library conventions; leakage awareness.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><b>Convention:</b> learned attributes end with a trailing underscore (<code>mean_</code>, <code>scale_</code>) and are created in <code>fit</code> — signaling “fitted state.” Hyperparameters (constructor args) do <em>not</em> get the underscore.</li>
+            <li><code>fit</code> <em>returns <code>self</code></em> so you can chain and slot into pipelines.</li>
+            <li>Calling <code>transform</code> before <code>fit</code> must fail explicitly (sklearn raises <code>NotFittedError</code>).</li>
+            <li><b>Leakage:</b> you <code>fit</code> on <em>train only</em> and <code>transform</code> both train and test — fitting on the full dataset leaks test statistics into training and inflates metrics.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Working fit/transform; stores state.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Trailing-underscore convention, <code>return self</code>, not-fitted guard.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Explains train/test leakage; notes per-column 2-D reality (<code>axis=0</code>) and where <code>get_params</code>/<code>set_params</code>/<code>clone</code> fit for grid search.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> the leakage point volunteered unprompted — the clearest mid-vs-senior separator here.</div>
+        <div class="block"><p class="label">Follow-up</p><p>To work in <code>GridSearchCV</code>, what contract must <code>__init__</code> honor? (Params set, not validated/mutated, in <code>__init__</code> only — so <code>clone</code> can deep-copy params, not learned state.)</p></div>
+      </div>
+    </article>
+
+    <!-- Q17 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q17</span><h3>Registry-based factory (Strategy) for model selection</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate+</span><span class="tag">Patterns</span><span class="tag time">≤13 min · code ~6 / discuss ~7</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Select among many model/strategy implementations by name at runtime (e.g., <code>model: xgboost</code> from a YAML config). Build a registry-based factory using a decorator to register classes. Why beat a long <code>if/elif</code>?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class ModelFactory:
+    _registry = {}
+
+    @classmethod
+    def register(cls, name):
+        def deco(model_cls):
+            cls._registry[name] = model_cls
+            return model_cls
+        return deco
+
+    @classmethod
+    def create(cls, name, **kwargs):
+        if name not in cls._registry:                  # narrow check first
+            raise ValueError(f"unknown model {name!r}; "
+                             f"have {list(cls._registry)}")
+        return cls._registry[name](**kwargs)           # ctor errors propagate
+
+@ModelFactory.register("linear")
+class LinearModel:
+    def __init__(self, lr=0.01): self.lr = lr
+
+model = ModelFactory.create("linear", lr=0.1)</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Strategy/Factory patterns, decorators as registration, the open/closed principle, and careful error handling.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>The decorator registers each class at import time, keyed by name; <code>create</code> looks up and instantiates.</li>
+            <li><b>Open/closed:</b> add a model by writing a class + decorator — no edits to the factory or a central <code>if/elif</code>. New strategies can even live in plugins.</li>
+            <li><b>Correctness:</b> check membership <em>before</em> constructing. Wrapping the constructor call in <code>try/except KeyError</code> would mis-report a <code>KeyError</code> raised <em>inside</em> the constructor as “unknown model” — a maddening bug.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Working registry + decorator.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Explains open/closed vs <code>if/elif</code>; clean error for unknown names.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Avoids masking constructor errors; flags pitfalls (module must be imported to self-register; name collisions); ties to config-driven ML.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> noticing the error-masking trap, and that registration requires the plugin module to be imported.</div>
+        <div class="block"><p class="label">Follow-up</p><p>How do you guarantee plugin modules self-register? (Explicit imports / entry points.)</p></div>
+      </div>
+    </article>
+
+    <!-- Q18 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q18</span><h3>Callable objects: <code>__call__</code> vs closures</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Data model</span><span class="tag time">≤12 min · code ~6 / discuss ~6</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>Implement a parameterized, stateful callable — e.g., a <code>FocalLoss(gamma)</code> or a <code>MovingAverage(window)</code> whose <em>instances are callable</em>. Compare a class with <code>__call__</code> to a closure. When prefer the class?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>from collections import deque
+
+class MovingAverage:
+    def __init__(self, window):
+        self.window = window
+        self._buf = deque(maxlen=window)
+    def __call__(self, x):
+        self._buf.append(x)
+        return sum(self._buf) / len(self._buf)
+    def reset(self):
+        self._buf.clear()
+
+ma = MovingAverage(3); ma(10); ma(20); ma(30)   # -&gt; 20.0
+
+# Closure equivalent:
+def moving_average(window):
+    buf = deque(maxlen=window)
+    def step(x):
+        buf.append(x); return sum(buf) / len(buf)
+    return step</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p><code>__call__</code>, stateful callables, and choosing between OO and functional styles.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><code>__call__</code> makes an instance behave like a function (<code>ma(x)</code>) while holding <em>inspectable, resettable</em> state — ideal for parameterized loss/metric objects you pass where a callable is expected (the Keras/PyTorch loss-as-object convention).</li>
+            <li>A <em>closure</em> is lighter but its state is hidden in a cell — harder to introspect, serialize, or extend.</li>
+            <li>Prefer the <em>class</em> when you need extra methods (<code>reset</code>), introspection, pickling/checkpointing, or subclassing; the closure for quick one-offs.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Implements one correctly.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Gives both; states both are “a function with memory.”</div></div>
+          <div class="band"><span class="s s4">4</span><div>Picks class for testability/serialization (a stateful transform that must be checkpointed); notes closures aren't picklable by default; uses <code>deque(maxlen=…)</code> deliberately.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> connecting <code>__call__</code> to loss/metric/transform objects and pickling for checkpoints.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Why is <code>deque(maxlen=…)</code> better than a list here? How would you pickle the class vs the closure?</p></div>
+      </div>
+    </article>
+
+    <!-- Q19 -->
+    <article class="qcard" data-tier="M">
+      <header class="qhead">
+        <span class="qnum">Q19</span><h3>Shallow vs deep copy of a config/model</h3>
+        <div class="tags"><span class="tag tier-M">Intermediate</span><span class="tag">Copy &amp; state</span><span class="tag time">≤12 min · code ~5 / discuss ~7</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>A teammate does <code>cfg2 = copy.copy(cfg)</code>, mutates <code>cfg2.params["lr"]</code>, and is surprised <code>cfg.params["lr"]</code> changed too. Explain shallow vs deep copy, fix it, show how to customize copying, and name a deepcopy performance trap.</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>import copy
+
+class Config:
+    def __init__(self, params, features):
+        self.params = params          # dict
+        self.features = features      # list
+
+cfg = Config({"lr": 0.1}, ["age", "income"])
+shallow = copy.copy(cfg)             # new Config, SAME inner dict/list
+deep = copy.deepcopy(cfg)           # new Config, NEW inner dict/list
+shallow.params["lr"] = 0.5           # also mutates cfg.params (shared ref!)
+deep.params["lr"] = 0.9              # independent
+
+class Model:
+    def __init__(self, weights, conn=None):
+        self.weights = weights
+        self._conn = conn                       # un-copyable resource
+    def __deepcopy__(self, memo):
+        new = Model(copy.deepcopy(self.weights, memo))
+        new._conn = self._conn                  # share, don't copy
+        return new</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Shallow vs deep copy, the shared-reference trap, <code>__copy__</code>/<code>__deepcopy__</code>, the <code>memo</code> dict, and copy-cost awareness.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li><code>copy.copy</code> (shallow): new top-level object, but copies <em>references</em> to nested objects → mutating nested state leaks between copies.</li>
+            <li><code>copy.deepcopy</code>: recursively copies everything; the <code>memo</code> dict prevents infinite recursion on cycles and preserves shared identity within one copy.</li>
+            <li>Customize via <code>__deepcopy__</code>/<code>__copy__</code> — e.g., don't deepcopy a DB connection / open file / huge shared array; share or re-open instead.</li>
+            <li><b>Perf trap:</b> deepcopy of large arrays/DataFrames is slow and doubles memory; for big numeric state prefer explicit <code>np</code> copies or immutability.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Knows shallow vs deep verbally.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Fixes with <code>deepcopy</code>, explains the shared-reference leak.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Customizes <code>__deepcopy__</code> for un-copyable resources, mentions <code>memo</code>/cycles and the deepcopy perf/memory cost.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> “make the config an immutable frozen dataclass so copying isn't needed” — the design-level answer.</div>
+        <div class="block"><p class="label">Follow-up</p><p>How does deepcopy relate to pickling? (Both rely on <code>__reduce__</code>/<code>__getstate__</code> — see Q20.)</p></div>
+      </div>
+    </article>
+
+    <!-- Q20 -->
+    <article class="qcard" data-tier="A">
+      <header class="qhead">
+        <span class="qnum">Q20</span><h3>Serializing a stateful fitted object (pickle)</h3>
+        <div class="tags"><span class="tag tier-A">Advanced</span><span class="tag">Serialization</span><span class="tag time">≤14 min · code ~5 / discuss ~9</span></div>
+      </header>
+      <div class="prompt">
+        <p class="label">Prompt</p>
+        <p>You pickle a fitted transformer and load it in the serving environment; it fails to unpickle (or silently misbehaves). Walk through why pickling stateful objects is risky, what is/isn't picklable, and how to make a stateful estimator safely serializable. Where do <code>__getstate__</code>/<code>__setstate__</code> and <code>__new__</code> fit?</p>
+      </div>
+      <div class="guide">
+        <div class="block"><p class="label">Reference solution</p>
+<pre><code>class FeatureEncoder:
+    def __init__(self, db_url):
+        self.db_url = db_url
+        self._conn = connect(db_url)        # live, NOT picklable
+        self.vocab_ = None                  # learned state, picklable
+
+    def __getstate__(self):
+        state = self.__dict__.copy()
+        del state["_conn"]                  # drop the live connection
+        return state
+
+    def __setstate__(self, state):
+        self.__dict__.update(state)
+        self._conn = connect(self.db_url)   # rebuild on load</code></pre></div>
+        <div class="block"><p class="label">Skills tested</p><p>Persistence/reproducibility, <code>__getstate__</code>/<code>__setstate__</code>, the <code>__new__</code>-bypasses-<code>__init__</code> subtlety, and the real-world hazards of model serialization.</p></div>
+        <div class="block"><p class="label">Why each point matters</p>
+          <ul>
+            <li>Pickle serializes the instance <code>__dict__</code> by default; <em>live resources</em> (connections, file handles, threads/locks) and <em>lambdas/closures/locally-defined classes</em> aren't picklable → errors.</li>
+            <li><code>__getstate__</code> returns what to save (strip un-picklable handles); <code>__setstate__</code> restores and rebuilds them. Pickle reconstructs the object via <code>__new__</code> <em>without calling</em> <code>__init__</code> — so don't rely on <code>__init__</code> side-effects at load time.</li>
+            <li><b>Version skew:</b> unpickling needs the same class importable at the same path; library drift (numpy/sklearn) can break or <em>silently corrupt</em> — pin versions, store metadata.</li>
+            <li><b>Security:</b> never unpickle untrusted data — it can execute arbitrary code.</li>
+          </ul></div>
+        <div class="block bands"><p class="label">Scoring anchors</p>
+          <div class="band"><span class="s s2">2</span><div>Knows pickle exists; names one unpicklable thing.</div></div>
+          <div class="band"><span class="s s3">3</span><div>Uses <code>__getstate__</code>/<code>__setstate__</code> to drop &amp; rebuild a connection.</div></div>
+          <div class="band"><span class="s s4">4</span><div>Covers <code>__new__</code>-bypasses-<code>__init__</code>, version skew, the security risk, and recommends <code>joblib</code> for numpy-heavy models / pinning / storing schema.</div></div></div>
+        <div class="block reward"><b>Reward / watch for:</b> reproducibility instincts — pinning library versions, <code>joblib</code> over raw pickle for arrays, storing metadata alongside the artifact.</div>
+        <div class="block"><p class="label">Follow-up</p><p>Why is unpickling untrusted data dangerous? How does <code>joblib</code> differ from <code>pickle</code>? Why might a model pickled in training silently give wrong predictions in serving?</p></div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===================== COVERAGE ===================== -->
+<section id="coverage">
+  <div class="wrap">
+    <h2>Coverage map &amp; suggested sets</h2>
+    <p class="section-sub">Use this to balance a session across themes and tiers. Avoid co-selecting two questions from the same row.</p>
+    <table>
+      <thead><tr><th>Theme</th><th>Questions</th></tr></thead>
+      <tbody>
+        <tr><td>State &amp; attributes</td><td><span class="qref">Q01 · Q04 · Q05 · Q06</span></td></tr>
+        <tr><td>Methods &amp; constructors</td><td><span class="qref">Q03 · Q16 · Q17 · Q18</span></td></tr>
+        <tr><td>Inheritance &amp; MRO</td><td><span class="qref">Q11</span></td></tr>
+        <tr><td>Data model / dunders</td><td><span class="qref">Q02 · Q05 · Q08 · Q09 · Q10 · Q18</span></td></tr>
+        <tr><td>Interfaces &amp; typing</td><td><span class="qref">Q07</span></td></tr>
+        <tr><td>Design &amp; patterns</td><td><span class="qref">Q13 · Q17</span></td></tr>
+        <tr><td>Performance &amp; memory</td><td><span class="qref">Q12</span></td></tr>
+        <tr><td>Error handling</td><td><span class="qref">Q14</span></td></tr>
+        <tr><td>Copy / serialization / reproducibility</td><td><span class="qref">Q19 · Q20</span></td></tr>
+        <tr><td>Advanced data model</td><td><span class="qref">Q15</span></td></tr>
+        <tr><td>DS-applied</td><td><span class="qref">Q03 · Q07 · Q08 · Q16 · Q17 · Q20</span></td></tr>
+      </tbody>
+    </table>
+    <div class="sets">
+      <div class="setcard"><h4>Mid-level (1 hr)</h4><p>Q01 · Q03 · Q07 · Q16</p></div>
+      <div class="setcard"><h4>Senior (1 hr)</h4><p>Q11 · Q12 · Q15 · Q20</p></div>
+      <div class="setcard"><h4>Mixed / full-stack (1 hr)</h4><p>Q05 · Q10 · Q13 · Q19</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Python OOP Screening Bank · 20 questions · reference solutions &amp; scoring anchors · self-contained, offline-ready.<br>
+  Reviewed by a software-engineering and a data-science pass; calibrate before live use.
+</footer>
+
+<script>
+  function setView(mode){
+    document.body.className = 'mode-' + mode;
+    document.getElementById('view-int').classList.toggle('on', mode==='interviewer');
+    document.getElementById('view-cand').classList.toggle('on', mode==='candidate');
+  }
+  function filter(tier, el){
+    document.querySelectorAll('#filters .chip').forEach(c=>c.classList.remove('on'));
+    el.classList.add('on');
+    document.querySelectorAll('.qcard').forEach(card=>{
+      const show = (tier==='all') || (card.dataset.tier===tier);
+      card.classList.toggle('hidden', !show);
+    });
+  }
+</script>
+</body>
+</html>
