@@ -1,0 +1,1 @@
+{"ts": "2026-08-23T07:38:01Z", "status": "network_error", "error": "GET https://gamma-api.polymarket.com/events?active=true&closed=false&limit=100&offset=0 failed: <urlopen error Tunnel connection failed: 403 Forbidden>"}
